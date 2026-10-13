@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#075e68">
+<title>NursePro | Learn. Practice. Save Lives.</title>
+
+<style>
+:root {
+  --primary:#087f8c;
+  --dark:#07505a;
+  --bg:#f3f8fa;
+  --white:#ffffff;
+  --text:#17313b;
+  --muted:#6c8088;
+  --green:#168568;
+  --border:#e2ebee;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+button,input {font:inherit}
+button {cursor:pointer}
+header {
+  background:linear-gradient(135deg,#064c58,#0c8991);
+  color:white;
+  padding:23px 18px 28px;
+  border-radius:0 0 25px 25px;
+}
+.top {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.logo {font-size:23px;font-weight:800;letter-spacing:.2px}
+.logo span {color:#8ff0d2}
+.lang {
+  border:1px solid #ffffff70;
+  background:#ffffff15;
+  color:white;
+  border-radius:10px;
+  padding:8px 12px;
+}
+.tagline {font-size:12px;opacity:.85;margin-top:5px}
+.welcome {margin-top:26px;font-size:25px;font-weight:800;line-height:1.5}
+.subtitle {font-size:14px;line-height:1.8;opacity:.9}
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+  margin-top:20px;
+}
+.stat {
+  background:#ffffff17;
+  border:1px solid #ffffff24;
+  padding:12px 5px;
+  border-radius:13px;
+  text-align:center;
+}
+.stat strong {display:block;font-size:21px}
+.stat small {font-size:11px;opacity:.9}
+main {padding:18px 15px 95px;max-width:800px;margin:auto}
+.section-title {
+  font-size:19px;
+  font-weight:800;
+  margin:22px 0 13px;
+}
+.search {
+  width:100%;
+  border:1px solid var(--border);
+  padding:14px;
+  background:white;
+  border-radius:13px;
+  outline-color:var(--primary);
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.card {
+  background:white;
+  padding:16px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  box-shadow:0 3px 12px #153c4810;
+}
+.card .icon {font-size:27px}
+.card h3 {font-size:15px;margin:10px 0 6px}
+.card p {font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 12px}
+.primary-btn,.secondary-btn {
+  border:0;
+  border-radius:10px;
+  padding:11px 13px;
+  font-weight:700;
+  font-size:13px;
+}
+.primary-btn {background:var(--primary);color:white}
+.secondary-btn {background:#e8f5f5;color:var(--dark)}
+.full {width:100%}
+.row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.pill {
+  display:inline-block;
+  background:#e5f6ef;
+  color:#137553;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+  margin-bottom:8px;
+}
+.list-card {margin-bottom:12px}
+.list-card h3 {margin:0 0 7px;font-size:16px}
+.list-card p {font-size:13px;line-height:1.8;color:var(--muted)}
+.page {display:none}
+.page.active {display:block}
+.nav {
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#ffffffed;
+  backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-around;
+  padding:9px 3px calc(9px + env(safe-area-inset-bottom));
+  z-index:5;
+}
+.nav button {
+  background:transparent;
+  border:0;
+  color:var(--muted);
+  font-size:10px;
+  padding:5px;
+  min-width:55px;
+}
+.nav button span {display:block;font-size:20px;margin-bottom:3px}
+.nav button.active {color:var(--primary);font-weight:800}
+.question {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:18px;
+  margin-bottom:14px;
+}
+.question h3 {font-size:16px;line-height:1.7}
+.answer {
+  display:block;
+  width:100%;
+  text-align:start;
+  background:#f6f9fa;
+  border:1px solid var(--border);
+  padding:12px;
+  border-radius:11px;
+  margin:8px 0;
+  color:var(--text);
+}
+.answer.correct {background:#e3f8ed;border-color:#38a978}
+.answer.wrong {background:#fff0ef;border-color:#e87970}
+.feedback {font-size:13px;line-height:1.8;font-weight:600}
+.progress {
+  height:9px;background:#e5edef;border-radius:20px;overflow:hidden;margin:12px 0;
+}
+.progress div {height:100%;background:var(--green);width:0%;transition:width .3s}
+.notice {
+  background:#fff7e5;
+  border:1px solid #f3e0ad;
+  border-radius:13px;
+  padding:13px;
+  font-size:12px;
+  line-height:1.9;
+  margin-top:16px;
+}
+footer {text-align:center;color:var(--muted);font-size:11px;padding:22px 0}
+[dir="ltr"] .card,[dir="ltr"] .question {text-align:left}
+@media(min-width:600px) {
+  .grid {grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="top">
+    <div>
+      <div class="logo">Nurse<span>Pro</span> 🩺</div>
+      <div class="tagline">Learn. Practice. Save Lives.</div>
+    </div>
+    <button class="lang" id="langBtn" onclick="toggleLanguage()">English</button>
+  </div>
+
+  <div class="welcome" id="welcome">مستقبلك في التمريض يبدأ هنا.</div>
+  <div class="subtitle" id="subtitle">تعلّم، اختبر معلوماتك، وطوّر مهاراتك خطوة بخطوة.</div>
+
+  <div class="stats">
+    <div class="stat"><strong id="lessonCount">0</strong><small id="statLessons">دروس مكتملة</small></div>
+    <div class="stat"><strong id="quizScore">0</strong><small id="statPoints">نقاط الاختبارات</small></div>
+    <div class="stat"><strong>4</strong><small id="statLevels">مستويات دراسية</small></div>
+  </div>
+</header>
+
+<main>
+  <section class="page active" id="home">
+    <input class="search" id="search" placeholder="🔎 ابحث عن درس أو موضوع..." oninput="renderLessons()">
+
+    <div class="section-title" id="quickTitle">ماذا تريد أن تتعلم اليوم؟</div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📚</div>
+        <h3 id="homeLessonTitle">دروس التمريض</h3>
+        <p id="homeLessonDesc">دروس مبسطة للمراحل BT1 وBT2 وBT3 وTS.</p>
+        <button class="primary-btn full" onclick="showPage('lessons')" id="browseLessons">تصفح الدروس</button>
+      </div>
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3 id="homeQuizTitle">الاختبارات</h3>
+        <p id="homeQuizDesc">اختبر معلوماتك واعرف الإجابات الصحيحة.</p>
+        <button class="primary-btn full" onclick="showPage('quizzes')" id="startQuiz">ابدأ الاختبار</button>
+      </div>
+      <div class="card">
+        <div class="icon">🩹</div>
+        <h3 id="homeFirstTitle">الإسعافات الأولية</h3>
+        <p id="homeFirstDesc">تعرّف إلى المبادئ الأساسية للاستجابة للطوارئ.</p>
+        <button class="primary-btn full" onclick="showPage('firstaid')" id="learnFirst">تعلّم الآن</button>
+      </div>
+      <div class="card">
+        <div class="icon">🩺</div>
+        <h3 id="homeCasesTitle">الحالات السريرية</h3>
+        <p id="homeCasesDesc">تدرّب على التفكير السريري واتخاذ القرار.</p>
+        <button class="primary-btn full" onclick="showPage('cases')" id="openCases">ابدأ التدريب</button>
+      </div>
+    </div>
+
+    <div class="section-title" id="recommendedTitle">ابدأ من هنا</div>
+    <div class="card">
+      <span class="pill">BT1 · Beginner</span>
+      <h3 id="recommendedHeading">المبادئ الأساسية للتمريض</h3>
+      <p id="recommendedDesc">تعرّف إلى دور الممرض، سلامة المريض، ونظافة اليدين.</p>
+      <button class="primary-btn" onclick="openLesson(0)" id="recommendedBtn">افتح الدرس ←</button>
+    </div>
+  </section>
+
+  <section class="page" id="lessons">
+    <div class="section-title" id="lessonsHeading">📚 مكتبة الدروس</div>
+    <div id="lessonList"></div>
+  </section>
+
+  <section class="page" id="lessonDetail">
+    <button class="secondary-btn" onclick="showPage('lessons')" id="backLessons">← العودة للدروس</button>
+    <div id="lessonContent" class="card" style="margin-top:14px"></div>
+  </section>
+
+  <section class="page" id="quizzes">
+    <div class="section-title" id="quizHeading">📝 اختبر معلوماتك</div>
+    <div id="quizList"></div>
+    <div id="quizResult"></div>
+  </section>
+
+  <section class="page" id="firstaid">
+    <div class="section-title" id="firstHeading">🩹 مبادئ الإسعافات الأولية</div>
+    <div id="firstAidList"></div>
+  </section>
+
+  <section class="page" id="cases">
+    <div class="section-title" id="casesHeading">🩺 الحالات السريرية</div>
+    <div id="caseList"></div>
+  </section>
+
+  <section class="page" id="progress">
+    <div class="section-title" id="progressHeading">📊 تقدّمك الدراسي</div>
+    <div class="card">
+      <h3 id="progressLessonsLabel">الدروس المكتملة</h3>
+      <div class="progress"><div id="lessonProgress"></div></div>
+      <p id="progressLessonsText">أكمل الدروس لتتابع تقدّمك.</p>
+      <h3 id="progressQuizLabel">نقاط الاختبارات</h3>
+      <div class="progress"><div id="quizProgress"></div></div>
+      <p id="progressQuizText">أجب عن الأسئلة لاكتساب النقاط.</p>
+      <button class="secondary-btn" onclick="resetProgress()" id="resetBtn">إعادة التقدم</button>
+    </div>
+    <div class="notice" id="progressNotice">يُحفظ تقدّمك على هذا الجهاز باستخدام المتصفح. قد لا ينتقل إلى جهاز آخر.</div>
+  </section>
+
+  <div class="notice" id="medicalNotice">
+    ⚠️ هذا الموقع تعليمي مبدئي، وليس بديلًا عن التدريب السريري أو توجيهات الطبيب أو بروتوكولات المؤسسة الصحية. في حالات الطوارئ، اتصل بخدمات الطوارئ المحلية فورًا.
+  </div>
+  <footer>© 2026 NursePro · Learn. Practice. Save Lives.</footer>
+</main>
+
+<nav class="nav">
+  <button class="active" data-page="home" onclick="showPage('home')"><span>🏠</span><i id="navHome">الرئيسية</i></button>
+  <button data-page="lessons" onclick="showPage('lessons')"><span>📚</span><i id="navLessons">الدروس</i></button>
+  <button data-page="quizzes" onclick="showPage('quizzes')"><span>📝</span><i id="navQuizzes">الاختبارات</i></button>
+  <button data-page="firstaid" onclick="showPage('firstaid')"><span>🩹</span><i id="navFirst">الإسعاف</i></button>
+  <button data-page="progress" onclick="showPage('progress')"><span>📊</span><i id="navProgress">تقدّمي</i></button>
+</nav>
+
+<script>
+const lessons = [
+{
+ level:"BT1", icon:"🧼",
+ ar:"المبادئ الأساسية للتمريض",
+ en:"Fundamentals of Nursing",
+ arDesc:"دور الممرض وسلامة المريض ونظافة اليدين.",
+ enDesc:"The nursing role, patient safety and hand hygiene.",
+ arBody:`<h3>1. دور الممرض</h3><p>يساهم الممرض في رعاية المريض، مراقبة حالته، توثيق الملاحظات، والتواصل مع الفريق الصحي.</p><h3>2. سلامة المريض</h3><p>تحقق من هوية المريض وفق سياسة المؤسسة، وطبّق احتياطات السلامة، وأبلغ عن المخاطر.</p><h3>3. نظافة اليدين</h3><p>نظافة اليدين من أهم إجراءات الحد من انتقال العدوى. استخدم الماء والصابون عند اتساخ اليدين بوضوح، أو المطهر الكحولي عندما يكون مناسبًا وفق البروتوكول.</p>`,
+ enBody:`<h3>1. The nurse's role</h3><p>Nurses provide care, monitor patients, document observations and communicate with the healthcare team.</p><h3>2. Patient safety</h3><p>Verify patient identity according to facility policy, follow safety precautions and report risks.</p><h3>3. Hand hygiene</h3><p>Hand hygiene is essential for reducing infection transmission. Use soap and water when hands are visibly dirty, or an appropriate alcohol-based hand rub according to protocol.</p>`
+},
+{
+ level:"BT1", icon:"🌡️",
+ ar:"العلامات الحيوية",
+ en:"Vital Signs",
+ arDesc:"الحرارة والنبض والتنفس وضغط الدم.",
+ enDesc:"Temperature, pulse, respiration and blood pressure.",
+ arBody:`<h3>ما العلامات الحيوية؟</h3><p>تشمل عادةً درجة الحرارة، معدل النبض، معدل التنفس، وضغط الدم. وقد يشمل التقييم تشبع الأكسجين والألم بحسب الحالة.</p><h3>ماذا يفعل الممرض؟</h3><p>يستخدم جهازًا مناسبًا، يلتزم بالطريقة الصحيحة، ويسجل النتيجة والوقت. تُفسر القيم حسب العمر والحالة الصحية والسياق السريري.</p><h3>متى نبلغ الفريق الصحي؟</h3><p>عند وجود قيمة غير طبيعية أو تغير مقلق عن حالة المريض المعتادة، اتبع بروتوكول المؤسسة وأبلغ المسؤول فورًا.</p>`,
+ enBody:`<h3>What are vital signs?</h3><p>They commonly include temperature, pulse, respiratory rate and blood pressure. Oxygen saturation and pain may also be assessed.</p><h3>Nursing responsibilities</h3><p>Use suitable equipment and correct technique, then document the reading and time. Interpret results in the context of age and clinical condition.</p><h3>When to escalate</h3><p>Report abnormal or concerning changes promptly according to facility protocol.</p>`
+},
+{
+ level:"BT2", icon:"🦠",
+ ar:"مكافحة العدوى",
+ en:"Infection Prevention",
+ arDesc:"الاحتياطات القياسية ومعدات الحماية.",
+ enDesc:"Standard precautions and protective equipment.",
+ arBody:`<h3>الاحتياطات القياسية</h3><p>تُطبق على جميع المرضى وفق طبيعة الرعاية، وتشمل نظافة اليدين، معدات الوقاية المناسبة، والتعامل الآمن مع الأدوات الحادة.</p><h3>معدات الوقاية الشخصية</h3><p>اختَر القفازات والكمامة وواقي العينين والرداء حسب خطر التعرض المتوقع.</p><h3>التخلص من الأدوات الحادة</h3><p>ضع الإبر المستعملة مباشرةً في الحاوية المخصصة، ولا تُعد تغطيتها يدويًا إلا وفق إجراء معتمد ومحدد.</p>`,
+ enBody:`<h3>Standard precautions</h3><p>Apply them to all patients according to the care provided. They include hand hygiene, appropriate protective equipment and safe sharps handling.</p><h3>Personal protective equipment</h3><p>Select gloves, masks, eye protection and gowns based on the anticipated exposure risk.</p><h3>Sharps safety</h3><p>Dispose of used needles immediately in an approved sharps container. Do not recap them by hand unless a specific approved procedure requires it.</p>`
+},
+{
+ level:"BT2", icon:"💊",
+ ar:"سلامة إعطاء الأدوية",
+ en:"Medication Safety",
+ arDesc:"التحقق من الدواء والمريض والجرعة.",
+ enDesc:"Patient, medication and dose verification.",
+ arBody:`<h3>قبل إعطاء الدواء</h3><p>اتبع سياسة المؤسسة وقائمة التحقق المعتمدة. تحقق من هوية المريض، والدواء، والجرعة، والطريق، والوقت، والحساسية، والتوثيق وغيرها من المتطلبات المحلية.</p><h3>الحسابات الدوائية</h3><p>تحقق من الوحدات والتركيز والحسابات. اطلب مراجعة مستقلة عند الحاجة، ولا تعطِ دواءً إذا كانت الوصفة غير واضحة.</p><h3>إذا وقع خطأ</h3><p>أمّن سلامة المريض، وأبلغ المسؤول فورًا، واتبع إجراءات المؤسسة للتقييم والتوثيق والإبلاغ.</p>`,
+ enBody:`<h3>Before administration</h3><p>Follow facility policy and the approved checklist. Verify patient identity, medication, dose, route, time, allergies, documentation and other locally required checks.</p><h3>Medication calculations</h3><p>Verify units, concentration and calculations. Obtain an independent check when required, and never administer an unclear order.</p><h3>If an error occurs</h3><p>Prioritize patient safety, notify the responsible clinician promptly and follow facility assessment, documentation and reporting procedures.</p>`
+},
+{
+ level:"BT3", icon:"🫁",
+ ar:"التقييم الأولي للمريض",
+ en:"Initial Patient Assessment",
+ arDesc:"التعرف إلى المشكلات التي تهدد الحياة.",
+ enDesc:"Recognizing immediate life threats.",
+ arBody:`<h3>ابدأ بالسلامة</h3><p>تأكد من أمان المكان واستخدم معدات الوقاية المناسبة.</p><h3>التقييم الأولي</h3><p>في التدريب السريري، تعلّم نهج ABCDE تحت إشراف مختص: مجرى الهواء، التنفس، الدورة الدموية، الحالة العصبية، ثم التعرض والفحص المناسب.</p><h3>التصعيد السريع</h3><p>إذا ظهرت علامات خطر، اطلب المساعدة فورًا واتبع نظام الاستجابة الطارئة المعتمد في المؤسسة.</p>`,
+ enBody:`<h3>Start with safety</h3><p>Check scene safety and use appropriate protective equipment.</p><h3>Initial assessment</h3><p>Learn the ABCDE approach under qualified supervision: airway, breathing, circulation, disability and exposure.</p><h3>Escalation</h3><p>If danger signs are present, summon help immediately and follow the facility's emergency response system.</p>`
+},
+{
+ level:"TS", icon:"🫀",
+ ar:"التوثيق والتواصل السريري",
+ en:"Clinical Documentation",
+ arDesc:"تسجيل الملاحظات والتواصل الواضح.",
+ enDesc:"Accurate records and clear communication.",
+ arBody:`<h3>التوثيق الجيد</h3><p>سجّل الملاحظات بدقة وموضوعية وفي الوقت المناسب، مع الالتزام بالسرية وسياسة المؤسسة.</p><h3>التواصل</h3><p>استخدم تسليمًا منظمًا للمعلومات، واذكر التغيرات المهمة والإجراءات المتخذة والاستجابة لها.</p><h3>السرية</h3><p>لا تشارك معلومات المريض إلا مع الأشخاص المخولين ولأغراض الرعاية المسموح بها.</p>`,
+ enBody:`<h3>Good documentation</h3><p>Record observations accurately, objectively and promptly while following confidentiality rules and facility policy.</p><h3>Communication</h3><p>Use a structured handover and communicate important changes, interventions and patient responses.</p><h3>Confidentiality</h3><p>Share patient information only with authorized people for permitted care purposes.</p>`
+}
+];
+
+const questions = [
+{
+ ar:"ما الإجراء الأهم للحد من انتقال العدوى في الرعاية الصحية؟",
+ en:"Which action is essential to reduce infection transmission?",
+ options:["نظافة اليدين","تأخير توثيق الملاحظات","استخدام القفازات دائمًا دون تغيير"],
+ enOptions:["Hand hygiene","Delaying documentation","Always using gloves without changing them"],
+ correct:0,
+ explain:"نظافة اليدين من أهم إجراءات الوقاية من انتقال العدوى."
+},
+{
+ ar:"إذا كانت جرعة الدواء أو الوصفة غير واضحة، ماذا تفعل؟",
+ en:"What should you do if a medication order is unclear?",
+ options:["تخمين الجرعة","إيقاف الإجراء مؤقتًا والتحقق من الوصفة","إعطاء نصف الجرعة"],
+ enOptions:["Guess the dose","Pause and clarify the order","Give half the dose"],
+ correct:1,
+ explain:"لا تخمّن الجرعة؛ تحقق من الأمر مع المختص المسؤول."
+},
+{
+ ar:"ما التصرف المناسب عند ملاحظة تدهور مفاجئ في حالة المريض؟",
+ en:"What is appropriate when a patient suddenly deteriorates?",
+ options:["الانتظار حتى نهاية المناوبة","تجاهل التغير إذا كان المريض يتحدث","طلب المساعدة فورًا واتباع بروتوكول الطوارئ"],
+ enOptions:["Wait until the shift ends","Ignore it if the patient can talk","Call for help and follow emergency protocol"],
+ correct:2,
+ explain:"التدهور المفاجئ يستدعي التقييم والتصعيد السريعين وفق البروتوكول."
+},
+{
+ ar:"ما الطريقة الصحيحة للتعامل مع إبرة مستعملة؟",
+ en:"How should a used needle be handled?",
+ options:["وضعها فورًا في حاوية الأدوات الحادة","تركها على السرير","وضعها في الجيب"],
+ enOptions:["Place it immediately in a sharps container","Leave it on the bed","Put it in a pocket"],
+ correct:0,
+ explain:"تُرمى الأدوات الحادة في الحاوية المخصصة مباشرةً."
+},
+{
+ ar:"ما المقصود بالتوثيق السريري الجيد؟",
+ en:"What characterizes good clinical documentation?",
+ options:["كتابة معلومات غير مؤكدة","توثيق دقيق وموضوعي وفي الوقت المناسب","مشاركة الملف مع أي شخص"],
+ enOptions:["Writing unverified information","Accurate, objective and timely records","Sharing records with anyone"],
+ correct:1,
+ explain:"التوثيق الجيد دقيق وموضوعي ويحترم السرية وسياسة المؤسسة."
+}
+];
+
+const firstAid = [
+{
+ ar:"تقييم سلامة المكان",
+ en:"Check Scene Safety",
+ arText:"قبل الاقتراب، تأكد من عدم وجود خطر عليك أو على المصاب. استخدم معدات الوقاية المناسبة واطلب المساعدة.",
+ enText:"Before approaching, check for hazards to yourself and the injured person. Use appropriate protection and call for help."
+},
+{
+ ar:"فقدان الوعي",
+ en:"Unresponsiveness",
+ arText:"إذا كان الشخص لا يستجيب، اطلب المساعدة وخدمات الطوارئ المحلية فورًا. قيّم التنفس واتبع تعليمات موظف الطوارئ. لا تعطِ طعامًا أو شرابًا لشخص فاقد الوعي.",
+ enText:"If a person is unresponsive, call for help and local emergency services immediately. Assess breathing and follow the emergency dispatcher’s instructions. Do not give food or drink to an unconscious person."
+},
+{
+ ar:"الإنعاش القلبي الرئوي للبالغين",
+ en:"Adult CPR",
+ arText:"إذا كان البالغ غير مستجيب ولا يتنفس طبيعيًا، اطلب الطوارئ وأحضر جهاز AED إن توفر. ابدأ ضغطات الصدر وفق تدريبك وتعليمات موظف الطوارئ. للبالغين، يكون المعدل المعتاد 100–120 ضغطة في الدقيقة والعمق نحو 5–6 سم. اتبع الإرشادات المحلية وتدريبك.",
+ enText:"If an adult is unresponsive and not breathing normally, call emergency services and get an AED if available. Begin chest compressions according to your training and dispatcher instructions. For adults, the usual rate is 100–120 compressions/min and depth about 5–6 cm. Follow local guidance and your training."
+},
+{
+ ar:"النزيف الشديد",
+ en:"Severe Bleeding",
+ arText:"اطلب المساعدة الطبية الطارئة واضغط بقوة مباشرة على موضع النزيف باستخدام ضماد أو قطعة قماش نظيفة. اتبع تعليمات الطوارئ، ولا تزل جسمًا مغروسًا في الجرح.",
+ enText:"Call emergency medical services and apply firm direct pressure with a dressing or clean cloth. Follow emergency instructions and do not remove an embedded object."
+},
+{
+ ar:"الحروق",
+ en:"Burns",
+ arText:"برّد الحرق بماء جارٍ بارد أو فاتر لمدة 20 دقيقة تقريبًا إذا أمكن. لا تستخدم الثلج أو الزيوت، ولا تفقع الفقاعات. اطلب الرعاية العاجلة للحروق الكبيرة أو العميقة أو التي تصيب الوجه أو اليدين أو المناطق الحساسة.",
+ enText:"Cool the burn under cool or lukewarm running water for about 20 minutes if possible. Do not use ice or oils, and do not pop blisters. Seek urgent care for large or deep burns or burns involving the face, hands or sensitive areas."
+}
+];
+
+const cases = [
+{
+ ar:"الحالة الأولى: ارتفاع الحرارة",
+ en:"Case 1: Fever",
+ arText:"مريض لديه حرارة أعلى من المعتاد ويشكو من التعب. ما الخطوة التمريضية المناسبة؟",
+ enText:"A patient has an elevated temperature and feels unwell. What is an appropriate nursing action?",
+ options:["تسجيل الحرارة وتقييم الأعراض وإبلاغ المسؤول وفق الحالة","إعطاء أي دواء دون وصفة","تجاهل الأعراض"],
+ enOptions:["Record temperature, assess symptoms and escalate appropriately","Give any medicine without an order","Ignore the symptoms"],
+ correct:0,
+ explain:"التقييم والتوثيق والتصعيد حسب شدة الحالة وبروتوكول المؤسسة هي الخطوات المناسبة."
+},
+{
+ ar:"الحالة الثانية: ضيق التنفس",
+ en:"Case 2: Shortness of Breath",
+ arText:"يبدأ مريض بضيق تنفس مفاجئ. ما الأولوية؟",
+ enText:"A patient suddenly develops shortness of breath. What is the priority?",
+ options:["ترك المريض وحده","طلب المساعدة فورًا وتقييم الحالة وفق بروتوكول الطوارئ","تأجيل التقييم"],
+ enOptions:["Leave the patient alone","Call for help and assess according to emergency protocol","Delay assessment"],
+ correct:1,
+ explain:"ضيق التنفس المفاجئ قد يكون طارئًا ويستدعي تقييمًا ومساعدة فوريين."
+}
+];
+
+let lang="ar";
+let completed=JSON.parse(localStorage.getItem("np_completed")||"[]");
+let points=Number(localStorage.getItem("np_points")||0);
+let answered=JSON.parse(localStorage.getItem("np_answered")||"{}");
+
+function isEn(){return lang==="en"}
+function t(ar,en){return isEn()?en:ar}
+
+function toggleLanguage(){
+  lang=isEn()?"ar":"en";
+  document.documentElement.lang=lang;
+  document.documentElement.dir=isEn()?"ltr":"rtl";
+  document.getElementById("langBtn").textContent=t("English","العربية");
+  document.getElementById("welcome").textContent=t("مستقبلك في التمريض يبدأ هنا.","Your nursing future starts here.");
+  document.getElementById("subtitle").textContent=t("تعلّم، اختبر معلوماتك، وطوّر مهاراتك خطوة بخطوة.","Learn, test your knowledge and build your skills step by step.");
+  document.getElementById("statLessons").textContent=t("دروس مكتملة","Lessons completed");
+  document.getElementById("statPoints").textContent=t("نقاط الاختبارات","Quiz points");
+  document.getElementById("statLevels").textContent=t("مستويات دراسية","Study levels");
+  document.getElementById("quickTitle").textContent=t("ماذا تريد أن تتعلم اليوم؟","What would you like to learn today?");
+  document.getElementById("homeLessonTitle").textContent=t("دروس التمريض","Nursing Lessons");
+  document.getElementById("homeLessonDesc").textContent=t("دروس مبسطة للمراحل BT1 وBT2 وBT3 وTS.","Lessons for BT1, BT2, BT3 and TS.");
+  document.getElementById("browseLessons").textContent=t("تصفح الدروس","Browse lessons");
+  document.getElementById("homeQuizTitle").textContent=t("الاختبارات","Quizzes");
+  document.getElementById("homeQuizDesc").textContent=t("اختبر معلوماتك واعرف الإجابات الصحيحة.","Test your knowledge and review answers.");
+  document.getElementById("startQuiz").textContent=t("ابدأ الاختبار","Start quiz");
+  document.getElementById("homeFirstTitle").textContent=t("الإسعافات الأولية","First Aid");
+  document.getElementById("homeFirstDesc").textContent=t("تعرّف إلى المبادئ الأساسية للاستجابة للطوارئ.","Learn basic emergency response principles.");
+  document.getElementById("learnFirst").textContent=t("تعلّم الآن","Learn now");
+  document.getElementById("homeCasesTitle").textContent=t("الحالات السريرية","Clinical Cases");
+  document.getElementById("homeCasesDesc").textContent=t("تدرّب على التفكير السريري واتخاذ القرار.","Practice clinical reasoning and decision-making.");
+  document.getElementById("openCases").textContent=t("ابدأ التدريب","Start practice");
+  document.getElementById("recommendedTitle").textContent=t("ابدأ من هنا","Start here");
+  document.getElementById("recommendedHeading").textContent=lessons[0][lang];
+  document.getElementById("recommendedDesc").textContent=lessons[0][lang+"Desc"];
+  document.getElementById("recommendedBtn").textContent=t("افتح الدرس ←","Open lesson →");
+  document.getElementById("lessonsHeading").textContent=t("📚 مكتبة الدروس","📚 Lesson Library");
+  document.getElementById("quizHeading").textContent=t("📝 اختبر معلوماتك","📝 Test Your Knowledge");
+  document.getElementById("firstHeading").textContent=t("🩹 مبادئ الإسعافات الأولية","🩹 First Aid Basics");
+  document.getElementById("casesHeading").textContent=t("🩺 الحالات السريرية","🩺 Clinical Cases");
+  document.getElementById("progressHeading").textContent=t("📊 تقدّمك الدراسي","📊 Your Progress");
+  document.getElementById("progressLessonsLabel").textContent=t("الدروس المكتملة","Lessons completed");
+  document.getElementById("progressQuizLabel").textContent=t("نقاط الاختبارات","Quiz points");
+  document.getElementById("resetBtn").textContent=t("إعادة التقدم","Reset progress");
+  document.getElementById("progressNotice").textContent=t("يُحفظ تقدّمك على هذا الجهاز باستخدام المتصفح. قد لا ينتقل إلى جهاز آخر.","Your progress is saved in this browser on this device and may not transfer to another device.");
+  document.getElementById("medicalNotice").textContent=t("⚠️ هذا الموقع تعليمي مبدئي، وليس بديلًا عن التدريب السريري أو توجيهات الطبيب أو بروتوكولات المؤسسة الصحية. في حالات الطوارئ، اتصل بخدمات الطوارئ المحلية فورًا.","⚠️ This is an educational prototype, not a substitute for clinical training, clinician advice or facility protocols. In an emergency, contact local emergency services immediately.");
+  document.getElementById("navHome").textContent=t("الرئيسية","Home");
+  document.getElementById("navLessons").textContent=t("الدروس","Lessons");
+  document.getElementById("navQuizzes").textContent=t("الاختبارات","Quizzes");
+  document.getElementById("navFirst").textContent=t("الإسعاف","First Aid");
+  document.getElementById("navProgress").textContent=t("تقدّمي","Progress");
+  document.getElementById("backLessons").textContent=t("← العودة للدروس","← Back to lessons");
+  document.getElementById("search").placeholder=t("🔎 ابحث عن درس أو موضوع...","🔎 Search lessons or topics...");
+  renderLessons();renderQuizzes();renderFirstAid();renderCases();updateStats();
+}
+
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+  if(id==="progress")updateStats();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderLessons(){
+  const q=(document.getElementById("search").value||"").toLowerCase();
+  document.getElementById("lessonList").innerHTML=lessons.map((l,i)=>{
+    const title=l[lang],desc=l[lang+"Desc"];
+    if(!(title+" "+desc+" "+l.level).toLowerCase().includes(q))return "";
+    return `<div class="card list-card"><div class="row"><span class="pill">${l.level}</span><span>${completed.includes(i)?"✅":l.icon}</span></div><h3>${title}</h3><p>${desc}</p><button class="primary-btn" onclick="openLesson(${i})">${t("افتح الدرس","Open lesson")} →</button></div>`;
+  }).join("");
+}
+
+function openLesson(i){
+  const l=lessons[i];
+  document.getElementById("lessonContent").innerHTML=`<span class="pill">${l.level}</span><div style="font-size:35px">${l.icon}</div><h2>${l[lang]}</h2><p>${l[lang+"Desc"]}</p><hr style="border:0;border-top:1px solid var(--border);margin:18px 0"><div style="line-height:1.9;font-size:14px">${l[lang+"Body"]}</div><button class="primary-btn full" style="margin-top:20px" onclick="completeLesson(${i})">${completed.includes(i)?t("تم إكمال هذا الدرس ✓","Lesson completed ✓"):t("وضع علامة: مكتمل","Mark as completed")}</button>`;
+  showPage("lessonDetail");
+}
+
+function completeLesson(i){
+  if(!completed.includes(i)){completed.push(i);localStorage.setItem("np_completed",JSON.stringify(completed));}
+  updateStats();renderLessons();openLesson(i);
+}
+
+function renderQuizzes(){
+  document.getElementById("quizResult").innerHTML="";
+  document.getElementById("quizList").innerHTML=questions.map((q,i)=>{
+    const done=answered["q"+i];
+    return `<div class="question"><span class="pill">${t("السؤال","Question")} ${i+1}</span><h3>${q[lang]}</h3>${q.options.map((a,j)=>`<button class="answer ${done?(j===q.correct?"correct":j===done.choice?"wrong":""):""}" ${done?"disabled":""} onclick="answerQuestion(${i},${j})">${isEn()?q.enOptions[j]:a}</button>`).join("")}<div class="feedback" id="feedback${i}">${done?(done.choice===q.correct?"✅ ":"❌ ")+q.explain:""}</div></div>`;
+  }).join("");
+  if(questions.every((q,i)=>answered["q"+i])){
+    const score=questions.filter((q,i)=>answered["q"+i].choice===q.correct).length;
+    document.getElementById("quizResult").innerHTML=`<div class="card"><h3>${t("انتهى الاختبار!","Quiz completed!")}</h3><p>${t("نتيجتك","Your score")}: ${score}/${questions.length}</p><button class="secondary-btn" onclick="resetQuiz()">${t("إعادة الاختبار","Retry quiz")}</button></div>`;
+  }
+}
+
+function answerQuestion(i,j){
+  if(answered["q"+i])return;
+  answered["q"+i]={choice:j};
+  if(j===questions[i].correct)points+=10;
+  localStorage.setItem("np_answered",JSON.stringify(answered));
+  localStorage.setItem("np_points",String(points));
+  renderQuizzes();updateStats();
+}
+
+function resetQuiz(){
+  answered={};
+  localStorage.removeItem("np_answered");
+  renderQuizzes();updateStats();
+}
+
+function renderFirstAid(){
+  document.getElementById("firstAidList").innerHTML=firstAid.map((f,i)=>`<div class="card list-card"><div style="font-size:25px">${["🛡️","🚨","❤️","🩸","🔥"][i]}</div><h3>${f[lang]}</h3><p>${f[lang+"Text"]}</p></div>`).join("");
+}
+
+function renderCases(){
+  document.getElementById("caseList").innerHTML=cases.map((c,i)=>`<div class="question"><span class="pill">${t("تدريب سريري","Clinical practice")}</span><h3>${c[lang]}</h3><p>${c[lang+"Text"]}</p>${c.options.map((o,j)=>`<button class="answer" onclick="answerCase(${i},${j},this)">${isEn()?c.enOptions[j]:o}</button>`).join("")}<div class="feedback" id="caseFeedback${i}"></div></div>`).join("");
+}
+
+let caseDone={};
+function answerCase(i,j,btn){
+  if(caseDone[i])return;
+  caseDone[i]=true;
+  const c=cases[i];
+  btn.parentElement.querySelectorAll(".answer").forEach((b,k)=>{
+    b.disabled=true;
+    if(k===c.correct)b.classList.add("correct");
+    else if(k===j)b.classList.add("wrong");
+  });
+  document.getElementById("caseFeedback"+i).textContent=(j===c.correct?"✅ ":"❌ ")+c.explain;
+}
+
+function updateStats(){
+  document.getElementById("lessonCount").textContent=completed.length;
+  document.getElementById("quizScore").textContent=points;
+  document.getElementById("lessonProgress").style.width=(completed.length/lessons.length*100)+"%";
+  document.getElementById("quizProgress").style.width=Math.min(points/(questions.length*10)*100,100)+"%";
+  document.getElementById("progressLessonsText").textContent=t("أكملت ","Completed ")+completed.length+t(" من "," of ")+lessons.length+t(" دروس."," lessons.");
+  document.getElementById("progressQuizText").textContent=t("حصلت على ","You earned ")+points+t(" نقطة."," points.");
+}
+
+function resetProgress(){
+  if(!confirm(t("هل تريد إعادة ضبط كل تقدمك؟","Reset all your progress?")))return;
+  completed=[];points=0;answered={};caseDone={};
+  localStorage.removeItem("np_completed");
+  localStorage.removeItem("np_points");
+  localStorage.removeItem("np_answered");
+  renderLessons();renderQuizzes();renderCases();updateStats();
+}
+
+renderLessons();
+renderQuizzes();
+renderFirstAid();
+renderCases();
+updateStats();
+</script>
+</body>
+</html>
