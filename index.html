@@ -1243,11 +1243,117 @@ updateStats();
 (function () {
   const diseases = [
     {
-      en: "Diabetes Mellitus",
-      ar: "داء السكري",
-      icon: "🩸",
-      info: "A condition involving high blood glucose. Nursing education includes glucose monitoring, medication safety and patient education.",
-      arInfo: "حالة يرتفع فيها سكر الدم. تشمل الرعاية التمريضية مراقبة السكر، وسلامة الأدوية، وتثقيف المريض."
+  en: "Diabetes Mellitus",
+  ar: "داء السكري",
+  icon: "🩸",
+
+  info: `1. DEFINITION
+Diabetes mellitus is a chronic metabolic disease characterized by elevated blood glucose due to problems with insulin production, insulin action, or both.
+
+2. TYPES
+• Type 1 diabetes: The immune system destroys insulin-producing beta cells in the pancreas. Insulin is required for survival.
+• Type 2 diabetes: The body develops insulin resistance and may not produce enough insulin.
+• Gestational diabetes: Diabetes diagnosed during pregnancy.
+
+3. CAUSES AND RISK FACTORS
+Type 1 diabetes is mainly related to autoimmune processes and genetic susceptibility.
+Type 2 risk factors include family history, physical inactivity, excess body weight, and increasing age. It can also occur in people without these risk factors.
+
+4. SIGNS AND SYMPTOMS
+• Polyuria: Frequent urination.
+• Polydipsia: Excessive thirst.
+• Polyphagia: Increased hunger.
+• Fatigue and blurred vision.
+• Slow wound healing.
+• Unexplained weight loss, especially in type 1 diabetes.
+
+5. DIAGNOSIS
+Healthcare professionals may use fasting plasma glucose, HbA1c, an oral glucose tolerance test, or random plasma glucose when appropriate. Results must be interpreted according to clinical guidelines.
+
+6. TREATMENT
+Treatment depends on the diabetes type and the individual patient.
+• Healthy nutrition and regular physical activity.
+• Blood glucose monitoring.
+• Insulin for all people with type 1 diabetes and for some people with type 2 diabetes.
+• Other glucose-lowering medicines when prescribed.
+• Regular follow-up and screening for complications.
+
+7. NURSING CARE
+• Monitor blood glucose as prescribed.
+• Assess for symptoms of hypoglycemia and hyperglycemia.
+• Administer prescribed medicines safely.
+• Check the patient's understanding of medication and meal plans.
+• Teach appropriate foot care and skin inspection.
+• Encourage follow-up appointments and recommended screening.
+• Document observations, interventions, and patient responses.
+
+8. COMPLICATIONS
+Acute complications include hypoglycemia, diabetic ketoacidosis, and hyperosmolar hyperglycemic state.
+Long-term complications may affect the eyes, kidneys, nerves, heart, and blood vessels.
+
+9. WARNING SIGNS
+Confusion, unconsciousness, seizures, severe breathing difficulty, or suspected diabetic ketoacidosis requires emergency assessment. Never give food or drink to an unconscious person.
+
+10. KEY NURSING TERMS
+Insulin: A hormone that helps regulate blood glucose.
+Hyperglycemia: High blood glucose.
+Hypoglycemia: Low blood glucose.
+HbA1c: A test reflecting average blood glucose over approximately 2–3 months.`,
+
+  arInfo: `١. تعريف داء السكري
+داء السكري مرض استقلابي مزمن يتميز بارتفاع سكر الدم نتيجة خلل في إنتاج الإنسولين أو عمله أو كليهما.
+
+٢. أنواع داء السكري
+• النوع الأول: يهاجم الجهاز المناعي خلايا بيتا المنتجة للإنسولين في البنكرياس، ويحتاج المريض إلى الإنسولين للبقاء على قيد الحياة.
+• النوع الثاني: تحدث مقاومة للإنسولين، وقد لا ينتج الجسم كمية كافية منه.
+• سكري الحمل: يُشخّص أثناء الحمل.
+
+٣. الأسباب وعوامل الخطورة
+يرتبط النوع الأول غالبًا بآلية مناعية ذاتية واستعداد وراثي.
+تشمل عوامل خطورة النوع الثاني التاريخ العائلي، وقلة النشاط البدني، وزيادة الوزن، والتقدم في العمر. وقد يصاب به أشخاص لا توجد لديهم هذه العوامل.
+
+٤. العلامات والأعراض
+• كثرة التبول.
+• العطش الشديد.
+• زيادة الشعور بالجوع.
+• التعب وتشوش الرؤية.
+• بطء التئام الجروح.
+• نقص الوزن غير المبرر، خاصة في النوع الأول.
+
+٥. التشخيص
+قد يستخدم المختصون فحص سكر الدم الصائم، وفحص HbA1c، واختبار تحمل الغلوكوز الفموي، أو قياس السكر العشوائي في الحالات المناسبة. تُفسّر النتائج وفق الإرشادات الطبية المعتمدة.
+
+٦. العلاج
+يعتمد العلاج على نوع السكري وحالة المريض.
+• التغذية الصحية والنشاط البدني المنتظم.
+• مراقبة مستوى السكر.
+• الإنسولين لجميع مرضى النوع الأول، ولبعض مرضى النوع الثاني.
+• أدوية أخرى خافضة للسكر وفق وصف الطبيب.
+• المتابعة المنتظمة والفحوصات للكشف عن المضاعفات.
+
+٧. الرعاية التمريضية
+• مراقبة سكر الدم حسب الخطة العلاجية.
+• تقييم علامات هبوط السكر وارتفاعه.
+• إعطاء الأدوية الموصوفة بأمان.
+• التأكد من فهم المريض لخطة الأدوية والوجبات.
+• تعليم العناية المناسبة بالقدمين وفحص الجلد.
+• تشجيع المريض على المتابعة والفحوصات الموصى بها.
+• توثيق الملاحظات والتدخلات واستجابة المريض.
+
+٨. المضاعفات
+تشمل المضاعفات الحادة هبوط السكر، والحماض الكيتوني السكري، ومتلازمة فرط سكر الدم مفرطة الأسمولية.
+وقد تؤثر المضاعفات المزمنة في العينين والكليتين والأعصاب والقلب والأوعية الدموية.
+
+٩. علامات الخطر
+التشوش الذهني، وفقدان الوعي، والتشنجات، وصعوبة التنفس الشديدة، أو الاشتباه بالحماض الكيتوني تستدعي تقييمًا إسعافيًا. لا تعطِ الطعام أو الشراب لشخص فاقد الوعي.
+
+١٠. مصطلحات تمريضية مهمة
+الإنسولين: هرمون يساعد على تنظيم سكر الدم.
+فرط سكر الدم: ارتفاع مستوى السكر.
+هبوط سكر الدم: انخفاض مستوى السكر.
+HbA1c: فحص يعكس متوسط سكر الدم خلال نحو شهرين إلى ثلاثة أشهر.`
+},
+
     },
     {
       en: "Hypertension",
