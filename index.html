@@ -1242,154 +1242,956 @@ updateStats();
 <script>
 (function () {
   const diseases = [
-    {
-  en: "Diabetes Mellitus",
-  ar: "داء السكري",
-  icon: "🩸",
-
-  info: `1. DEFINITION
-Diabetes mellitus is a chronic metabolic disease characterized by elevated blood glucose due to problems with insulin production, insulin action, or both.
+  {
+    en: "Diabetes Mellitus",
+    ar: "داء السكري",
+    icon: "🩸",
+    info: `1. DEFINITION
+Diabetes mellitus is a chronic metabolic disease characterized by elevated blood glucose caused by problems with insulin production, insulin action, or both.
 
 2. TYPES
-• Type 1 diabetes: The immune system destroys insulin-producing beta cells in the pancreas. Insulin is required for survival.
-• Type 2 diabetes: The body develops insulin resistance and may not produce enough insulin.
+• Type 1: Autoimmune destruction of insulin-producing pancreatic beta cells.
+• Type 2: Insulin resistance and progressive impairment of insulin production.
 • Gestational diabetes: Diabetes diagnosed during pregnancy.
 
-3. CAUSES AND RISK FACTORS
-Type 1 diabetes is mainly related to autoimmune processes and genetic susceptibility.
-Type 2 risk factors include family history, physical inactivity, excess body weight, and increasing age. It can also occur in people without these risk factors.
-
-4. SIGNS AND SYMPTOMS
+3. SIGNS AND SYMPTOMS
 • Polyuria: Frequent urination.
 • Polydipsia: Excessive thirst.
 • Polyphagia: Increased hunger.
-• Fatigue and blurred vision.
-• Slow wound healing.
-• Unexplained weight loss, especially in type 1 diabetes.
+• Fatigue, blurred vision and slow wound healing.
+• Unexplained weight loss may occur, especially in type 1.
 
-5. DIAGNOSIS
-Healthcare professionals may use fasting plasma glucose, HbA1c, an oral glucose tolerance test, or random plasma glucose when appropriate. Results must be interpreted according to clinical guidelines.
+4. DIAGNOSIS
+Tests may include fasting plasma glucose, HbA1c, oral glucose tolerance testing and random plasma glucose when appropriate. Results must be interpreted using current clinical criteria.
 
-6. TREATMENT
-Treatment depends on the diabetes type and the individual patient.
-• Healthy nutrition and regular physical activity.
-• Blood glucose monitoring.
-• Insulin for all people with type 1 diabetes and for some people with type 2 diabetes.
-• Other glucose-lowering medicines when prescribed.
-• Regular follow-up and screening for complications.
+5. TREATMENT
+• Individualized nutrition and physical activity.
+• Glucose monitoring.
+• Insulin for type 1 diabetes and some people with type 2.
+• Other prescribed glucose-lowering medicines.
+• Regular follow-up and complication screening.
 
-7. NURSING CARE
-• Monitor blood glucose as prescribed.
-• Assess for symptoms of hypoglycemia and hyperglycemia.
+6. NURSING CARE
+• Monitor glucose as prescribed.
+• Recognize hypoglycemia and hyperglycemia.
 • Administer prescribed medicines safely.
-• Check the patient's understanding of medication and meal plans.
-• Teach appropriate foot care and skin inspection.
-• Encourage follow-up appointments and recommended screening.
-• Document observations, interventions, and patient responses.
+• Teach medication adherence and appropriate nutrition.
+• Encourage foot care and skin inspection.
+• Document findings and patient responses.
 
-8. COMPLICATIONS
-Acute complications include hypoglycemia, diabetic ketoacidosis, and hyperosmolar hyperglycemic state.
-Long-term complications may affect the eyes, kidneys, nerves, heart, and blood vessels.
+7. COMPLICATIONS
+Acute: hypoglycemia, diabetic ketoacidosis and hyperosmolar hyperglycemic state.
+Long-term: eye, kidney, nerve, heart and blood vessel complications.
 
-9. WARNING SIGNS
-Confusion, unconsciousness, seizures, severe breathing difficulty, or suspected diabetic ketoacidosis requires emergency assessment. Never give food or drink to an unconscious person.
+8. EMERGENCY WARNING
+Confusion, seizures, unconsciousness, severe breathing difficulty or suspected diabetic ketoacidosis require urgent assessment. Never give food or drink to an unconscious person.
 
-10. KEY NURSING TERMS
-Insulin: A hormone that helps regulate blood glucose.
+9. KEY TERMS
+Insulin: Hormone that regulates blood glucose.
 Hyperglycemia: High blood glucose.
 Hypoglycemia: Low blood glucose.
-HbA1c: A test reflecting average blood glucose over approximately 2–3 months.`,
-
-  arInfo: `١. تعريف داء السكري
+HbA1c: A measure of average blood glucose over approximately 2–3 months.`,
+    arInfo: `١. التعريف
 داء السكري مرض استقلابي مزمن يتميز بارتفاع سكر الدم نتيجة خلل في إنتاج الإنسولين أو عمله أو كليهما.
 
-٢. أنواع داء السكري
-• النوع الأول: يهاجم الجهاز المناعي خلايا بيتا المنتجة للإنسولين في البنكرياس، ويحتاج المريض إلى الإنسولين للبقاء على قيد الحياة.
-• النوع الثاني: تحدث مقاومة للإنسولين، وقد لا ينتج الجسم كمية كافية منه.
+٢. الأنواع
+• النوع الأول: تدمير مناعي ذاتي لخلايا بيتا المنتجة للإنسولين في البنكرياس.
+• النوع الثاني: مقاومة الإنسولين وتراجع قدرة الجسم على إنتاجه.
 • سكري الحمل: يُشخّص أثناء الحمل.
 
-٣. الأسباب وعوامل الخطورة
-يرتبط النوع الأول غالبًا بآلية مناعية ذاتية واستعداد وراثي.
-تشمل عوامل خطورة النوع الثاني التاريخ العائلي، وقلة النشاط البدني، وزيادة الوزن، والتقدم في العمر. وقد يصاب به أشخاص لا توجد لديهم هذه العوامل.
-
-٤. العلامات والأعراض
+٣. العلامات والأعراض
 • كثرة التبول.
 • العطش الشديد.
-• زيادة الشعور بالجوع.
-• التعب وتشوش الرؤية.
-• بطء التئام الجروح.
-• نقص الوزن غير المبرر، خاصة في النوع الأول.
+• زيادة الجوع.
+• التعب وتشوش الرؤية وبطء التئام الجروح.
+• قد يحدث نقص وزن غير مبرر، خاصة في النوع الأول.
 
-٥. التشخيص
-قد يستخدم المختصون فحص سكر الدم الصائم، وفحص HbA1c، واختبار تحمل الغلوكوز الفموي، أو قياس السكر العشوائي في الحالات المناسبة. تُفسّر النتائج وفق الإرشادات الطبية المعتمدة.
+٤. التشخيص
+قد تشمل الفحوصات سكر الدم الصائم، وHbA1c، واختبار تحمل الغلوكوز، وقياس السكر العشوائي في الحالات المناسبة. تُفسّر النتائج وفق المعايير الطبية المعتمدة.
 
-٦. العلاج
-يعتمد العلاج على نوع السكري وحالة المريض.
-• التغذية الصحية والنشاط البدني المنتظم.
+٥. العلاج
+• تغذية مناسبة ونشاط بدني وفق حالة المريض.
 • مراقبة مستوى السكر.
-• الإنسولين لجميع مرضى النوع الأول، ولبعض مرضى النوع الثاني.
-• أدوية أخرى خافضة للسكر وفق وصف الطبيب.
-• المتابعة المنتظمة والفحوصات للكشف عن المضاعفات.
+• الإنسولين للنوع الأول وبعض حالات النوع الثاني.
+• أدوية خافضة للسكر وفق وصف الطبيب.
+• المتابعة الدورية والكشف عن المضاعفات.
 
-٧. الرعاية التمريضية
-• مراقبة سكر الدم حسب الخطة العلاجية.
-• تقييم علامات هبوط السكر وارتفاعه.
+٦. الرعاية التمريضية
+• مراقبة السكر حسب الخطة العلاجية.
+• التعرف إلى هبوط السكر وارتفاعه.
 • إعطاء الأدوية الموصوفة بأمان.
-• التأكد من فهم المريض لخطة الأدوية والوجبات.
-• تعليم العناية المناسبة بالقدمين وفحص الجلد.
-• تشجيع المريض على المتابعة والفحوصات الموصى بها.
-• توثيق الملاحظات والتدخلات واستجابة المريض.
+• تثقيف المريض حول الأدوية والتغذية.
+• تعليم العناية بالقدمين وفحص الجلد.
+• توثيق الملاحظات واستجابة المريض.
 
-٨. المضاعفات
-تشمل المضاعفات الحادة هبوط السكر، والحماض الكيتوني السكري، ومتلازمة فرط سكر الدم مفرطة الأسمولية.
-وقد تؤثر المضاعفات المزمنة في العينين والكليتين والأعصاب والقلب والأوعية الدموية.
+٧. المضاعفات
+الحادة: هبوط السكر، والحماض الكيتوني السكري، ومتلازمة فرط سكر الدم مفرطة الأسمولية.
+المزمنة: مضاعفات العين والكلى والأعصاب والقلب والأوعية الدموية.
 
-٩. علامات الخطر
-التشوش الذهني، وفقدان الوعي، والتشنجات، وصعوبة التنفس الشديدة، أو الاشتباه بالحماض الكيتوني تستدعي تقييمًا إسعافيًا. لا تعطِ الطعام أو الشراب لشخص فاقد الوعي.
+٨. علامات الخطر
+التشوش، والتشنجات، وفقدان الوعي، وصعوبة التنفس الشديدة أو الاشتباه بالحماض الكيتوني تستدعي تقييمًا عاجلًا. لا تعطِ الطعام أو الشراب لشخص فاقد الوعي.
 
-١٠. مصطلحات تمريضية مهمة
-الإنسولين: هرمون يساعد على تنظيم سكر الدم.
-فرط سكر الدم: ارتفاع مستوى السكر.
-هبوط سكر الدم: انخفاض مستوى السكر.
+٩. مصطلحات مهمة
+الإنسولين: هرمون ينظم سكر الدم.
+فرط سكر الدم: ارتفاع السكر.
+هبوط سكر الدم: انخفاض السكر.
 HbA1c: فحص يعكس متوسط سكر الدم خلال نحو شهرين إلى ثلاثة أشهر.`
   },
+
   {
     en: "Hypertension",
     ar: "ارتفاع ضغط الدم",
     icon: "❤️",
-    info: "Persistently elevated blood pressure. Nursing care includes accurate measurement, monitoring and lifestyle education.",
-    arInfo: "ارتفاع مستمر في ضغط الدم. تشمل الرعاية قياس الضغط بدقة، والمتابعة، والتثقيف حول نمط الحياة."
-  },
-    {
-      en: "Asthma",
-      ar: "الربو",
-      icon: "🫁",
-      info: "A condition that causes airway inflammation and narrowing. Nursing education includes symptom monitoring and correct inhaler use.",
-      arInfo: "مرض يسبب التهاب الممرات الهوائية وتضيّقها. يشمل التثقيف مراقبة الأعراض وطريقة استخدام البخاخ."
-    },
-    {
-      en: "Pneumonia",
-      ar: "الالتهاب الرئوي",
-      icon: "🏥",
-      info: "An infection affecting the lungs. Nursing care includes respiratory assessment, monitoring oxygenation and following the treatment plan.",
-      arInfo: "عدوى تصيب الرئتين. تشمل الرعاية تقييم التنفس، ومراقبة الأكسجة، واتباع الخطة العلاجية."
-    },
-    {
-      en: "Meningitis",
-      ar: "التهاب السحايا",
-      icon: "🧠",
-      info: "Inflammation of the membranes surrounding the brain and spinal cord. Suspected meningitis requires urgent medical assessment.",
-      arInfo: "التهاب الأغشية المحيطة بالدماغ والحبل الشوكي. الاشتباه به يستدعي تقييمًا طبيًا عاجلًا."
-    },
-    {
-      en: "Heart Failure",
-      ar: "قصور القلب",
-      icon: "💓",
-      info: "A condition in which the heart cannot pump blood adequately for the body's needs. Monitoring symptoms and fluid status is important.",
-      arInfo: "حالة لا يستطيع فيها القلب ضخ الدم بما يكفي لحاجات الجسم. من المهم مراقبة الأعراض وتوازن السوائل."
-    }
-  ];
+    info: `1. DEFINITION
+Hypertension is persistently elevated arterial blood pressure. It often has no noticeable symptoms.
 
+2. RISK FACTORS
+• Family history and increasing age.
+• High salt intake.
+• Physical inactivity and excess body weight.
+• Smoking and some chronic conditions.
+
+3. SIGNS AND SYMPTOMS
+Many people have no symptoms. Severe hypertension may be associated with headache, visual changes, chest pain or shortness of breath.
+
+4. DIAGNOSIS
+Blood pressure is measured using an appropriate cuff and correct technique. Repeated measurements and sometimes home or ambulatory monitoring help confirm the diagnosis.
+
+5. TREATMENT
+Lifestyle changes and prescribed antihypertensive medicines may be required. Treatment depends on the patient's overall risk and clinical condition.
+
+6. NURSING CARE
+• Measure and document blood pressure accurately.
+• Check symptoms and prescribed medication adherence.
+• Educate about reduced salt intake, activity and smoking cessation.
+• Monitor for dizziness or other medicine-related adverse effects.
+
+7. EMERGENCY WARNING
+Very high blood pressure with chest pain, severe breathlessness, confusion, weakness or visual changes requires emergency assessment.`,
+    arInfo: `١. التعريف
+ارتفاع ضغط الدم هو ارتفاع مستمر في ضغط الدم داخل الشرايين، وغالبًا لا يسبب أعراضًا واضحة.
+
+٢. عوامل الخطورة
+• التاريخ العائلي والتقدم في العمر.
+• تناول كميات كبيرة من الملح.
+• قلة النشاط البدني وزيادة الوزن.
+• التدخين وبعض الأمراض المزمنة.
+
+٣. العلامات والأعراض
+قد لا تظهر أعراض. وقد يرتبط الارتفاع الشديد بالصداع أو اضطراب الرؤية أو ألم الصدر أو ضيق التنفس.
+
+٤. التشخيص
+يُقاس الضغط باستخدام جهاز وكُمّ مناسبين وبطريقة صحيحة. تساعد القياسات المتكررة أو المراقبة المنزلية في تأكيد التشخيص.
+
+٥. العلاج
+قد يتطلب العلاج تعديل نمط الحياة وأدوية خافضة للضغط يصفها الطبيب، بحسب حالة المريض.
+
+٦. الرعاية التمريضية
+• قياس الضغط وتوثيقه بدقة.
+• تقييم الأعراض والالتزام بالأدوية.
+• التثقيف حول تقليل الملح والنشاط البدني وإيقاف التدخين.
+• مراقبة الدوخة والآثار الجانبية للأدوية.
+
+٧. علامات الخطر
+ارتفاع الضغط الشديد المصحوب بألم الصدر أو ضيق التنفس الشديد أو التشوش أو الضعف المفاجئ أو اضطراب الرؤية يستدعي تقييمًا إسعافيًا.`
+  },
+
+  {
+    en: "Asthma",
+    ar: "الربو",
+    icon: "🫁",
+    info: `1. DEFINITION
+Asthma is a chronic inflammatory airway disease that causes variable narrowing of the airways and episodes of breathing difficulty.
+
+2. TRIGGERS
+• Allergens, dust and smoke.
+• Respiratory infections.
+• Exercise or cold air in some people.
+• Other individual triggers.
+
+3. SIGNS AND SYMPTOMS
+• Wheezing.
+• Cough, especially at night.
+• Chest tightness.
+• Shortness of breath.
+Symptoms may vary over time.
+
+4. DIAGNOSIS
+Assessment includes clinical history and lung function testing, such as spirometry, when appropriate.
+
+5. TREATMENT
+Treatment may include prescribed inhaled corticosteroids and bronchodilators. The patient should follow an individualized asthma action plan.
+
+6. NURSING CARE
+• Assess respiratory rate, effort and oxygen saturation.
+• Observe speech, mental status and response to treatment.
+• Assist with prescribed inhalers and correct technique.
+• Identify triggers and reinforce the written action plan.
+
+7. EMERGENCY WARNING
+Severe breathing difficulty, blue or grey lips, confusion, exhaustion or inability to speak in full sentences requires emergency help.`,
+    arInfo: `١. التعريف
+الربو مرض التهابي مزمن في الممرات الهوائية يسبب تضيقًا متغيرًا ونوبات من صعوبة التنفس.
+
+٢. المحفزات
+• مسببات الحساسية والغبار والدخان.
+• التهابات الجهاز التنفسي.
+• الرياضة أو الهواء البارد لدى بعض الأشخاص.
+• محفزات تختلف من شخص إلى آخر.
+
+٣. العلامات والأعراض
+• الأزيز أو الصفير التنفسي.
+• السعال، خاصة ليلًا.
+• ضيق الصدر.
+• ضيق التنفس.
+قد تتغير الأعراض مع الوقت.
+
+٤. التشخيص
+يشمل التقييم التاريخ المرضي واختبارات وظائف الرئة، مثل قياس التنفس، عند الحاجة.
+
+٥. العلاج
+قد يشمل العلاج بخاخات الكورتيكوستيرويد وموسعات القصبات الموصوفة. يجب اتباع خطة علاجية فردية للربو.
+
+٦. الرعاية التمريضية
+• تقييم معدل التنفس وجهده وتشبع الأكسجين.
+• مراقبة القدرة على الكلام والوعي والاستجابة للعلاج.
+• المساعدة في استخدام البخاخات الموصوفة بالطريقة الصحيحة.
+• تحديد المحفزات وتعزيز فهم خطة التعامل مع النوبات.
+
+٧. علامات الخطر
+صعوبة التنفس الشديدة، أو ازرقاق الشفتين، أو التشوش، أو الإنهاك، أو العجز عن إكمال جملة تستدعي الإسعاف فورًا.`
+  },
+
+  {
+    en: "Pneumonia",
+    ar: "الالتهاب الرئوي",
+    icon: "🏥",
+    info: `1. DEFINITION
+Pneumonia is an infection of the lung tissue that can be caused by bacteria, viruses or, less commonly, fungi.
+
+2. RISK FACTORS
+Older age, chronic disease, weakened immunity and swallowing difficulties may increase risk.
+
+3. SIGNS AND SYMPTOMS
+• Fever and chills.
+• Cough, sometimes with sputum.
+• Shortness of breath.
+• Chest pain during breathing or coughing.
+• Fatigue and confusion in some older adults.
+
+4. DIAGNOSIS
+Assessment may include examination, oxygen saturation, chest imaging and laboratory tests.
+
+5. TREATMENT
+Treatment depends on the cause and severity. Antibiotics are used for bacterial pneumonia when indicated, not for every viral infection.
+
+6. NURSING CARE
+• Monitor breathing, temperature and oxygen saturation.
+• Assess sputum and hydration.
+• Administer prescribed treatment safely.
+• Encourage appropriate fluids and mobility when clinically suitable.
+• Follow infection-prevention precautions.
+
+7. EMERGENCY WARNING
+Severe breathlessness, blue lips, confusion, collapse or rapidly worsening symptoms require urgent assessment.`,
+    arInfo: `١. التعريف
+الالتهاب الرئوي عدوى تصيب أنسجة الرئة، وقد تسببها البكتيريا أو الفيروسات، وأحيانًا الفطريات.
+
+٢. عوامل الخطورة
+قد يزداد الخطر مع التقدم في العمر والأمراض المزمنة وضعف المناعة وصعوبة البلع.
+
+٣. العلامات والأعراض
+• الحمى والقشعريرة.
+• السعال وقد يصاحبه بلغم.
+• ضيق التنفس.
+• ألم الصدر أثناء التنفس أو السعال.
+• التعب والتشوش لدى بعض كبار السن.
+
+٤. التشخيص
+قد يشمل الفحص السريري وقياس تشبع الأكسجين وتصوير الصدر والفحوصات المخبرية.
+
+٥. العلاج
+يعتمد العلاج على السبب والشدة. تُستخدم المضادات الحيوية عند وجود التهاب بكتيري يستدعيها، وليس لكل عدوى فيروسية.
+
+٦. الرعاية التمريضية
+• مراقبة التنفس والحرارة وتشبع الأكسجين.
+• تقييم البلغم وحالة السوائل.
+• إعطاء العلاج الموصوف بأمان.
+• تشجيع السوائل والحركة عندما تكون مناسبة طبيًا.
+• الالتزام باحتياطات منع العدوى.
+
+٧. علامات الخطر
+ضيق التنفس الشديد أو ازرقاق الشفتين أو التشوش أو الانهيار أو التدهور السريع يستدعي تقييمًا عاجلًا.`
+  },
+
+  {
+    en: "Meningitis",
+    ar: "التهاب السحايا",
+    icon: "🧠",
+    info: `1. DEFINITION
+Meningitis is inflammation of the membranes surrounding the brain and spinal cord. Causes include viruses and bacteria; some causes are medical emergencies.
+
+2. SIGNS AND SYMPTOMS
+• Fever and severe headache.
+• Neck stiffness.
+• Light sensitivity.
+• Nausea or vomiting.
+• Confusion or reduced consciousness.
+A rash may occur in some serious bacterial infections.
+
+3. DIAGNOSIS
+Urgent clinical assessment is required. Investigations may include blood tests and lumbar puncture when clinically appropriate.
+
+4. TREATMENT
+Treatment depends on the cause. Suspected bacterial meningitis requires urgent hospital treatment and timely prescribed antibiotics.
+
+5. NURSING CARE
+• Monitor consciousness, vital signs and neurological status.
+• Follow infection-control and isolation instructions.
+• Administer prescribed treatment promptly.
+• Observe for seizures and deterioration.
+• Document changes and escalate concerns.
+
+6. EMERGENCY WARNING
+Suspected meningitis requires immediate emergency assessment. Do not wait for every symptom to appear.`,
+    arInfo: `١. التعريف
+التهاب السحايا هو التهاب الأغشية المحيطة بالدماغ والحبل الشوكي. قد تسببه الفيروسات أو البكتيريا، وبعض أسبابه حالات إسعافية.
+
+٢. العلامات والأعراض
+• الحمى والصداع الشديد.
+• تيبس الرقبة.
+• الحساسية للضوء.
+• الغثيان أو القيء.
+• التشوش أو انخفاض مستوى الوعي.
+قد يظهر طفح جلدي في بعض العدوى البكتيرية الخطيرة.
+
+٣. التشخيص
+يلزم تقييم طبي عاجل. قد تشمل الفحوصات تحاليل الدم والبزل القطني عندما يكون مناسبًا طبيًا.
+
+٤. العلاج
+يعتمد العلاج على السبب. الاشتباه بالتهاب السحايا البكتيري يتطلب علاجًا مستشفويًا عاجلًا ومضادات حيوية موصوفة في الوقت المناسب.
+
+٥. الرعاية التمريضية
+• مراقبة الوعي والعلامات الحيوية والحالة العصبية.
+• اتباع تعليمات مكافحة العدوى والعزل.
+• إعطاء العلاج الموصوف دون تأخير.
+• مراقبة التشنجات والتدهور.
+• توثيق التغيرات وإبلاغ الفريق الطبي.
+
+٦. علامات الخطر
+الاشتباه بالتهاب السحايا يستدعي التقييم الإسعافي فورًا. لا تنتظر ظهور جميع الأعراض.`
+  },
+
+  {
+    en: "Heart Failure",
+    ar: "قصور القلب",
+    icon: "💓",
+    info: `1. DEFINITION
+Heart failure occurs when the heart cannot pump or fill adequately to meet the body's needs.
+
+2. COMMON FEATURES
+• Shortness of breath.
+• Swelling of the legs or ankles.
+• Fatigue and reduced exercise tolerance.
+• Difficulty breathing when lying flat.
+• Rapid weight gain from fluid retention.
+
+3. ASSESSMENT
+Evaluation may include clinical examination, ECG, echocardiography and blood tests.
+
+4. TREATMENT
+Management may include prescribed medicines, monitoring fluid status and individualized lifestyle advice.
+
+5. NURSING CARE
+• Monitor breathing, oxygen saturation, swelling and weight.
+• Record fluid intake and output when ordered.
+• Administer prescribed medicines and observe effects.
+• Teach the patient to follow the care plan.
+• Report worsening symptoms promptly.
+
+6. EMERGENCY WARNING
+Severe breathlessness at rest, chest pain, fainting or blue lips requires emergency assessment.`,
+    arInfo: `١. التعريف
+قصور القلب حالة لا يستطيع فيها القلب الامتلاء أو ضخ الدم بصورة كافية لتلبية حاجات الجسم.
+
+٢. العلامات الشائعة
+• ضيق التنفس.
+• تورم الساقين أو الكاحلين.
+• التعب وضعف تحمل المجهود.
+• صعوبة التنفس عند الاستلقاء.
+• زيادة سريعة في الوزن بسبب احتباس السوائل.
+
+٣. التقييم
+قد يشمل الفحص السريري وتخطيط القلب وتصوير القلب بالموجات فوق الصوتية وتحاليل الدم.
+
+٤. العلاج
+قد يشمل الأدوية الموصوفة ومراقبة السوائل وإرشادات نمط الحياة المناسبة لكل مريض.
+
+٥. الرعاية التمريضية
+• مراقبة التنفس وتشبع الأكسجين والتورم والوزن.
+• تسجيل السوائل الداخلة والخارجة عند طلب ذلك.
+• إعطاء الأدوية الموصوفة ومراقبة تأثيرها.
+• تعليم المريض الالتزام بالخطة العلاجية.
+• الإبلاغ سريعًا عن تفاقم الأعراض.
+
+٦. علامات الخطر
+ضيق التنفس الشديد أثناء الراحة أو ألم الصدر أو الإغماء أو ازرقاق الشفتين يستدعي الإسعاف.`
+  },
+
+  {
+    en: "COPD",
+    ar: "مرض الانسداد الرئوي المزمن",
+    icon: "🌬️",
+    info: `1. DEFINITION
+COPD is a chronic lung disease that causes persistent airflow limitation. Smoking is a major risk factor, but other exposures can contribute.
+
+2. SIGNS AND SYMPTOMS
+• Persistent cough.
+• Sputum production.
+• Progressive shortness of breath.
+• Wheezing and reduced exercise tolerance.
+
+3. DIAGNOSIS
+Diagnosis is based on clinical assessment and spirometry.
+
+4. TREATMENT
+Management may include prescribed inhalers, smoking cessation, vaccinations, pulmonary rehabilitation and oxygen for selected patients when indicated.
+
+5. NURSING CARE
+• Assess respiratory effort and oxygen saturation.
+• Encourage correct inhaler technique.
+• Support smoking cessation.
+• Teach energy conservation and breathing techniques.
+• Monitor for increased sputum, fever or worsening breathlessness.
+
+6. EMERGENCY WARNING
+Severe or sudden breathing difficulty, confusion or blue lips requires emergency care.`,
+    arInfo: `١. التعريف
+مرض الانسداد الرئوي المزمن مرض رئوي مزمن يسبب محدودية مستمرة في تدفق الهواء. التدخين عامل خطورة رئيسي، وقد تسهم تعرضات أخرى في حدوثه.
+
+٢. العلامات والأعراض
+• سعال مستمر.
+• إنتاج البلغم.
+• ضيق تنفس يزداد تدريجيًا.
+• أزيز وضعف القدرة على بذل المجهود.
+
+٣. التشخيص
+يعتمد التشخيص على التقييم السريري واختبار قياس التنفس.
+
+٤. العلاج
+قد يشمل العلاج البخاخات الموصوفة وإيقاف التدخين واللقاحات وإعادة التأهيل الرئوي والأكسجين لبعض المرضى عند وجود استطباب.
+
+٥. الرعاية التمريضية
+• تقييم جهد التنفس وتشبع الأكسجين.
+• التأكد من الاستخدام الصحيح للبخاخ.
+• دعم المريض في الإقلاع عن التدخين.
+• تعليم توفير الطاقة وتقنيات التنفس.
+• مراقبة زيادة البلغم أو الحمى أو تفاقم ضيق التنفس.
+
+٦. علامات الخطر
+صعوبة التنفس الشديدة أو المفاجئة أو التشوش أو ازرقاق الشفتين تستدعي الإسعاف.`
+  },
+
+  {
+    en: "Hepatitis",
+    ar: "التهاب الكبد",
+    icon: "🧫",
+    info: `1. DEFINITION
+Hepatitis is inflammation of the liver. Causes include hepatitis viruses, certain medicines, alcohol and autoimmune conditions.
+
+2. SIGNS AND SYMPTOMS
+• Fatigue and loss of appetite.
+• Nausea or abdominal discomfort.
+• Dark urine and pale stools.
+• Yellowing of the skin or eyes in some cases.
+
+3. DIAGNOSIS
+Assessment may include liver blood tests and specific tests for viral hepatitis.
+
+4. TREATMENT
+Treatment depends on the cause. Some viral infections resolve with supportive care, while others may require antiviral treatment and follow-up.
+
+5. NURSING CARE
+• Monitor symptoms and ordered laboratory tests.
+• Review medicines with the clinical team.
+• Teach hand hygiene and transmission-prevention measures.
+• Encourage follow-up and vaccination when appropriate.
+
+6. EMERGENCY WARNING
+Confusion, unusual bleeding, severe abdominal swelling or rapidly worsening jaundice requires urgent medical assessment.`,
+    arInfo: `١. التعريف
+التهاب الكبد هو التهاب يصيب الكبد. قد تسببه الفيروسات أو بعض الأدوية أو الكحول أو أمراض المناعة الذاتية.
+
+٢. العلامات والأعراض
+• التعب وفقدان الشهية.
+• الغثيان أو الانزعاج البطني.
+• البول الداكن والبراز الفاتح.
+• اصفرار الجلد أو العينين في بعض الحالات.
+
+٣. التشخيص
+قد يشمل التقييم تحاليل وظائف الكبد وفحوصات خاصة بالتهاب الكبد الفيروسي.
+
+٤. العلاج
+يعتمد العلاج على السبب. قد تتحسن بعض العدوى الفيروسية بالعلاج الداعم، بينما تتطلب حالات أخرى مضادات فيروسية ومتابعة.
+
+٥. الرعاية التمريضية
+• مراقبة الأعراض والفحوصات المخبرية المطلوبة.
+• مراجعة الأدوية مع الفريق الطبي.
+• تعليم نظافة اليدين وطرق منع انتقال العدوى.
+• تشجيع المتابعة والتطعيم عند ملاءمته.
+
+٦. علامات الخطر
+التشوش أو النزيف غير المعتاد أو التورم البطني الشديد أو ازدياد اليرقان بسرعة يستدعي تقييمًا عاجلًا.`
+  },
+
+  {
+    en: "Chronic Kidney Disease",
+    ar: "مرض الكلى المزمن",
+    icon: "🫘",
+    info: `1. DEFINITION
+Chronic kidney disease involves abnormalities of kidney structure or function lasting at least three months.
+
+2. RISK FACTORS
+Diabetes, hypertension, family history and certain kidney disorders increase risk.
+
+3. SIGNS AND SYMPTOMS
+Early disease may cause no symptoms. Later features may include fatigue, swelling, nausea, changes in urination and difficulty controlling blood pressure.
+
+4. DIAGNOSIS
+Assessment may include blood creatinine and estimated filtration rate, urine albumin testing and other investigations.
+
+5. TREATMENT
+Treatment aims to manage the cause, control blood pressure, reduce complications and adjust medicines and diet when indicated.
+
+6. NURSING CARE
+• Monitor blood pressure, weight, swelling and urine output when indicated.
+• Review laboratory results and prescribed medicines.
+• Avoid unapproved medicines that may harm the kidneys.
+• Provide individualized education about diet and follow-up.
+
+7. EMERGENCY WARNING
+Severe breathlessness, chest pain, confusion or markedly reduced urine with acute illness requires urgent assessment.`,
+    arInfo: `١. التعريف
+مرض الكلى المزمن هو اضطراب في بنية الكلى أو وظيفتها يستمر ثلاثة أشهر على الأقل.
+
+٢. عوامل الخطورة
+السكري وارتفاع الضغط والتاريخ العائلي وبعض أمراض الكلى تزيد من الخطر.
+
+٣. العلامات والأعراض
+قد لا تظهر أعراض في المراحل المبكرة. وقد تشمل المراحل المتقدمة التعب والتورم والغثيان وتغير التبول وصعوبة ضبط ضغط الدم.
+
+٤. التشخيص
+قد يشمل قياس الكرياتينين ومعدل الترشيح الكبيبي المقدّر وفحص ألبومين البول وفحوصات أخرى.
+
+٥. العلاج
+يهدف العلاج إلى ضبط السبب والضغط وتقليل المضاعفات وتعديل الأدوية والغذاء عند الحاجة.
+
+٦. الرعاية التمريضية
+• مراقبة الضغط والوزن والتورم وكمية البول عند الحاجة.
+• متابعة التحاليل والأدوية الموصوفة.
+• تجنب الأدوية غير المعتمدة التي قد تضر الكلى.
+• تقديم إرشادات فردية حول الغذاء والمتابعة.
+
+٧. علامات الخطر
+ضيق التنفس الشديد أو ألم الصدر أو التشوش أو الانخفاض الكبير في البول أثناء مرض حاد يستدعي تقييمًا عاجلًا.`
+  },
+
+  {
+    en: "Stroke",
+    ar: "السكتة الدماغية",
+    icon: "🧠",
+    info: `1. DEFINITION
+A stroke occurs when blood flow to part of the brain is interrupted or when bleeding occurs in the brain.
+
+2. WARNING SIGNS
+Remember FAST:
+• Face: one side may droop.
+• Arm: sudden weakness or numbness.
+• Speech: difficulty speaking or understanding.
+• Time: call emergency services immediately.
+Other signs include sudden vision loss, imbalance or severe headache.
+
+3. DIAGNOSIS
+Urgent neurological assessment and brain imaging are essential to identify the type of stroke.
+
+4. TREATMENT
+Treatment depends on the type and timing. Some patients may qualify for time-sensitive clot treatment or procedures.
+
+5. NURSING CARE
+• Record the time symptoms began or the patient was last known well.
+• Monitor consciousness, vital signs and neurological status.
+• Keep the patient without oral food, fluids or medicines until swallowing safety is assessed.
+• Follow aspiration precautions and prescribed care.
+
+6. EMERGENCY WARNING
+Suspected stroke is always an emergency, even if symptoms improve.`,
+    arInfo: `١. التعريف
+تحدث السكتة الدماغية عندما ينقطع تدفق الدم إلى جزء من الدماغ أو يحدث نزيف داخله.
+
+٢. علامات التحذير
+تذكّر FAST:
+• الوجه: تدلّي أحد جانبي الوجه.
+• الذراع: ضعف أو خدر مفاجئ.
+• الكلام: صعوبة الكلام أو الفهم.
+• الوقت: الاتصال بالإسعاف فورًا.
+وقد تظهر اضطرابات مفاجئة في الرؤية أو التوازن أو صداع شديد.
+
+٣. التشخيص
+يلزم تقييم عصبي وتصوير الدماغ بصورة عاجلة لتحديد نوع السكتة.
+
+٤. العلاج
+يعتمد العلاج على النوع والوقت. وقد يستفيد بعض المرضى من علاجات لإزالة الخثرة ضمن نافذة زمنية محددة.
+
+٥. الرعاية التمريضية
+• توثيق وقت بداية الأعراض أو آخر وقت كان فيه المريض طبيعيًا.
+• مراقبة الوعي والعلامات الحيوية والحالة العصبية.
+• منع الطعام والشراب والأدوية الفموية حتى تقييم سلامة البلع.
+• تطبيق احتياطات منع الاستنشاق الرئوي واتباع الخطة العلاجية.
+
+٦. علامات الخطر
+السكتة الدماغية المشتبه بها حالة إسعافية حتى لو تحسنت الأعراض.`
+  },
+
+  {
+    en: "Myocardial Infarction",
+    ar: "احتشاء عضلة القلب",
+    icon: "❤️‍🩹",
+    info: `1. DEFINITION
+A myocardial infarction, commonly called a heart attack, occurs when blood flow to part of the heart muscle is severely reduced or blocked.
+
+2. SIGNS AND SYMPTOMS
+• Chest pressure, tightness or pain.
+• Pain spreading to the arm, back, neck or jaw.
+• Shortness of breath, sweating or nausea.
+Some people, including older adults and people with diabetes, may have atypical symptoms.
+
+3. DIAGNOSIS
+Assessment may include ECG, cardiac troponin blood tests and clinical examination.
+
+4. TREATMENT
+Urgent hospital treatment aims to restore blood flow when indicated and prevent complications.
+
+5. NURSING CARE
+• Activate emergency protocols promptly.
+• Monitor vital signs, symptoms and cardiac rhythm.
+• Obtain and assist with investigations as directed.
+• Administer prescribed medicines and observe responses.
+• Reassure the patient and document changes.
+
+6. EMERGENCY WARNING
+Suspected heart attack requires emergency services. Do not allow the patient to drive themselves to hospital.`,
+    arInfo: `١. التعريف
+احتشاء عضلة القلب، المعروف بالنوبة القلبية، يحدث عندما ينخفض تدفق الدم إلى جزء من عضلة القلب بشدة أو ينسد.
+
+٢. العلامات والأعراض
+• ضغط أو ضيق أو ألم في الصدر.
+• انتشار الألم إلى الذراع أو الظهر أو الرقبة أو الفك.
+• ضيق التنفس أو التعرق أو الغثيان.
+قد تظهر أعراض غير نمطية لدى بعض الأشخاص، بمن فيهم كبار السن ومرضى السكري.
+
+٣. التشخيص
+قد يشمل تخطيط القلب وتحليل التروبونين القلبي والفحص السريري.
+
+٤. العلاج
+يهدف العلاج المستشفوي العاجل إلى استعادة تدفق الدم عند الحاجة ومنع المضاعفات.
+
+٥. الرعاية التمريضية
+• تفعيل إجراءات الطوارئ دون تأخير.
+• مراقبة العلامات الحيوية والأعراض ونظم القلب.
+• المساعدة في الفحوصات حسب التعليمات.
+• إعطاء الأدوية الموصوفة ومراقبة الاستجابة.
+• طمأنة المريض وتوثيق التغيرات.
+
+٦. علامات الخطر
+الاشتباه بالنوبة القلبية يستدعي الإسعاف. لا تدع المريض يقود بنفسه إلى المستشفى.`
+  },
+
+  {
+    en: "Anemia",
+    ar: "فقر الدم",
+    icon: "🩸",
+    info: `1. DEFINITION
+Anemia is a reduction in hemoglobin or red blood cell capacity that limits oxygen delivery to tissues.
+
+2. CAUSES
+• Iron deficiency.
+• Vitamin B12 or folate deficiency.
+• Blood loss.
+• Chronic disease or inherited conditions.
+
+3. SIGNS AND SYMPTOMS
+• Fatigue and weakness.
+• Pale skin.
+• Dizziness or headache.
+• Shortness of breath during activity.
+• Rapid heartbeat in some cases.
+
+4. DIAGNOSIS
+Assessment usually includes a complete blood count and may include iron studies, vitamin tests or investigations for blood loss.
+
+5. TREATMENT
+Treatment depends on the cause. Supplements, dietary changes or other medical treatments may be prescribed.
+
+6. NURSING CARE
+• Assess fatigue, breathing and activity tolerance.
+• Monitor ordered blood tests.
+• Administer prescribed treatment safely.
+• Teach the patient to follow the treatment plan and attend follow-up.
+
+7. EMERGENCY WARNING
+Severe breathlessness, chest pain, fainting or active heavy bleeding requires urgent assessment.`,
+    arInfo: `١. التعريف
+فقر الدم هو انخفاض الهيموغلوبين أو قدرة كريات الدم الحمراء على نقل الأكسجين إلى الأنسجة.
+
+٢. الأسباب
+• نقص الحديد.
+• نقص فيتامين B12 أو حمض الفوليك.
+• فقدان الدم.
+• الأمراض المزمنة أو بعض الحالات الوراثية.
+
+٣. العلامات والأعراض
+• التعب والضعف.
+• شحوب الجلد.
+• الدوخة أو الصداع.
+• ضيق التنفس أثناء النشاط.
+• تسارع ضربات القلب في بعض الحالات.
+
+٤. التشخيص
+يشمل التقييم عادة تعداد الدم الكامل، وقد يشمل فحوصات الحديد والفيتامينات أو البحث عن مصدر فقدان الدم.
+
+٥. العلاج
+يعتمد العلاج على السبب، وقد يشمل المكملات أو تعديل الغذاء أو علاجات طبية أخرى.
+
+٦. الرعاية التمريضية
+• تقييم التعب والتنفس وتحمل النشاط.
+• متابعة تحاليل الدم المطلوبة.
+• إعطاء العلاج الموصوف بأمان.
+• تثقيف المريض حول الخطة العلاجية والمتابعة.
+
+٧. علامات الخطر
+ضيق التنفس الشديد أو ألم الصدر أو الإغماء أو النزيف الغزير يستدعي تقييمًا عاجلًا.`
+  },
+
+  {
+    en: "Sepsis",
+    ar: "الإنتان",
+    icon: "🚨",
+    info: `1. DEFINITION
+Sepsis is a life-threatening organ dysfunction caused by a dysregulated response to infection.
+
+2. POSSIBLE SIGNS
+• Fever or unusually low temperature.
+• Rapid breathing or heart rate.
+• Confusion or reduced alertness.
+• Low blood pressure.
+• Reduced urine output or mottled skin.
+
+3. ASSESSMENT
+Prompt clinical assessment includes vital signs, organ function and investigations directed by the healthcare team.
+
+4. TREATMENT
+Sepsis is a medical emergency. Hospital treatment may include timely antimicrobials, intravenous fluids and treatment of the infection source.
+
+5. NURSING CARE
+• Recognize deterioration and activate escalation protocols.
+• Monitor vital signs, consciousness and urine output.
+• Obtain ordered samples promptly without delaying urgent treatment.
+• Administer prescribed treatment and reassess response.
+• Document observations and communicate changes clearly.
+
+6. EMERGENCY WARNING
+Suspected sepsis with deterioration requires immediate emergency assessment.`,
+    arInfo: `١. التعريف
+الإنتان حالة مهددة للحياة تحدث عندما تؤدي استجابة الجسم غير المنضبطة للعدوى إلى خلل في وظائف الأعضاء.
+
+٢. العلامات المحتملة
+• الحمى أو انخفاض الحرارة بصورة غير معتادة.
+• تسارع التنفس أو ضربات القلب.
+• التشوش أو انخفاض الانتباه.
+• انخفاض ضغط الدم.
+• انخفاض كمية البول أو تبقع الجلد.
+
+٣. التقييم
+يشمل التقييم السريري العاجل العلامات الحيوية ووظائف الأعضاء والفحوصات التي يحددها الفريق الطبي.
+
+٤. العلاج
+الإنتان حالة إسعافية. قد يشمل العلاج في المستشفى مضادات الميكروبات في الوقت المناسب والسوائل الوريدية وعلاج مصدر العدوى.
+
+٥. الرعاية التمريضية
+• التعرف إلى التدهور وتفعيل بروتوكولات التصعيد.
+• مراقبة العلامات الحيوية والوعي وكمية البول.
+• أخذ العينات المطلوبة دون تأخير العلاج العاجل.
+• إعطاء العلاج الموصوف وإعادة تقييم الاستجابة.
+• توثيق الملاحظات وإبلاغ الفريق بالتغيرات بوضوح.
+
+٦. علامات الخطر
+الاشتباه بالإنتان المصحوب بالتدهور يستدعي تقييمًا إسعافيًا فوريًا.`
+  },
+
+  {
+    en: "Gastroenteritis",
+    ar: "التهاب المعدة والأمعاء",
+    icon: "🦠",
+    info: `1. DEFINITION
+Gastroenteritis is inflammation of the stomach and intestines, often caused by a viral or bacterial infection or contaminated food or water.
+
+2. SIGNS AND SYMPTOMS
+• Diarrhea.
+• Nausea and vomiting.
+• Abdominal cramps.
+• Fever in some cases.
+• Dehydration.
+
+3. ASSESSMENT
+Assess hydration, vital signs, urine output, symptoms and relevant exposure history. Tests may be required in selected cases.
+
+4. TREATMENT
+Oral rehydration is important for many mild cases. Severe dehydration or inability to retain fluids may require urgent medical care and intravenous fluids.
+
+5. NURSING CARE
+• Monitor fluid balance and dehydration signs.
+• Encourage appropriate oral rehydration if safe.
+• Follow hand hygiene and infection-control measures.
+• Monitor symptoms and report deterioration.
+• Follow local guidance for food handling and isolation.
+
+6. EMERGENCY WARNING
+Blood in stool, severe abdominal pain, confusion, fainting or signs of severe dehydration require urgent assessment.`,
+    arInfo: `١. التعريف
+التهاب المعدة والأمعاء هو التهاب يصيب المعدة والأمعاء، وغالبًا تسببه عدوى فيروسية أو بكتيرية أو طعام أو ماء ملوث.
+
+٢. العلامات والأعراض
+• الإسهال.
+• الغثيان والقيء.
+• تقلصات البطن.
+• الحمى في بعض الحالات.
+• الجفاف.
+
+٣. التقييم
+يُقيّم الترطيب والعلامات الحيوية وكمية البول والأعراض والتعرضات المحتملة. وقد تلزم فحوصات في حالات معينة.
+
+٤. العلاج
+تُعد محاليل الإماهة الفموية مهمة في كثير من الحالات الخفيفة. وقد يتطلب الجفاف الشديد أو عدم القدرة على الاحتفاظ بالسوائل رعاية عاجلة وسوائل وريدية.
+
+٥. الرعاية التمريضية
+• مراقبة توازن السوائل وعلامات الجفاف.
+• تشجيع الإماهة الفموية المناسبة إذا كانت آمنة.
+• الالتزام بنظافة اليدين وإجراءات مكافحة العدوى.
+• مراقبة الأعراض والإبلاغ عن التدهور.
+• اتباع الإرشادات المحلية المتعلقة بالطعام والعزل.
+
+٦. علامات الخطر
+وجود دم في البراز أو ألم بطني شديد أو التشوش أو الإغماء أو الجفاف الشديد يستدعي تقييمًا عاجلًا.`
+  },
+
+  {
+    en: "Osteoporosis",
+    ar: "هشاشة العظام",
+    icon: "🦴",
+    info: `1. DEFINITION
+Osteoporosis is a condition in which bone strength is reduced, increasing the risk of fractures.
+
+2. RISK FACTORS
+• Increasing age.
+• Menopause and some hormonal conditions.
+• Low body weight or inadequate nutrition.
+• Certain medicines and reduced physical activity.
+• Previous fragility fracture.
+
+3. SIGNS AND DIAGNOSIS
+It often causes no symptoms until a fracture occurs. Bone mineral density testing may help establish the diagnosis.
+
+4. TREATMENT
+Management may include prescribed medicines, adequate calcium and vitamin D intake, suitable weight-bearing activity and fall prevention.
+
+5. NURSING CARE
+• Assess fall risk and home safety.
+• Encourage safe mobility and appropriate exercise.
+• Reinforce prescribed treatment and nutrition advice.
+• Teach fracture-prevention measures.
+• Monitor pain and mobility after fractures.
+
+6. EMERGENCY WARNING
+A suspected fracture after a fall, severe new back pain or inability to bear weight requires prompt medical assessment.`,
+    arInfo: `١. التعريف
+هشاشة العظام حالة تنخفض فيها قوة العظام، مما يزيد خطر الكسور.
+
+٢. عوامل الخطورة
+• التقدم في العمر.
+• انقطاع الطمث وبعض الاضطرابات الهرمونية.
+• انخفاض الوزن أو سوء التغذية.
+• بعض الأدوية وقلة النشاط البدني.
+• وجود كسر سابق بسبب إصابة بسيطة.
+
+٣. العلامات والتشخيص
+غالبًا لا تسبب أعراضًا حتى حدوث كسر. وقد يساعد فحص كثافة المعادن في العظام على التشخيص.
+
+٤. العلاج
+قد يشمل العلاج أدوية موصوفة وتناول كمية مناسبة من الكالسيوم وفيتامين D ونشاطًا بدنيًا مناسبًا ومنع السقوط.
+
+٥. الرعاية التمريضية
+• تقييم خطر السقوط وسلامة المنزل.
+• تشجيع الحركة الآمنة والتمارين المناسبة.
+• تعزيز الالتزام بالعلاج والإرشادات الغذائية.
+• تعليم طرق الوقاية من الكسور.
+• مراقبة الألم والحركة بعد الكسور.
+
+٦. علامات الخطر
+الاشتباه بكسر بعد السقوط أو ألم ظهر جديد وشديد أو عدم القدرة على تحميل الوزن يستدعي تقييمًا طبيًا سريعًا.`
+  },
+
+  {
+    en: "Epilepsy",
+    ar: "الصرع",
+    icon: "⚡",
+    info: `1. DEFINITION
+Epilepsy is a neurological condition characterized by a tendency to have recurrent unprovoked seizures.
+
+2. POSSIBLE FEATURES
+Seizures may cause staring, unusual sensations, stiffening, jerking movements or impaired awareness. The presentation varies by seizure type.
+
+3. DIAGNOSIS
+Assessment may include medical history, neurological examination, EEG and brain imaging when indicated.
+
+4. TREATMENT
+Treatment may include prescribed anti-seizure medicines and specialist follow-up. Medicines should not be stopped abruptly without medical advice.
+
+5. NURSING CARE DURING A SEIZURE
+• Stay with the patient and protect them from nearby hazards.
+• Cushion the head and loosen tight clothing around the neck.
+• Do not restrain movements.
+• Do not place anything in the mouth.
+• Time the seizure.
+• When movements stop, check breathing and place the patient on their side if appropriate.
+• Follow the patient's seizure plan and document observations.
+
+6. EMERGENCY WARNING
+Call emergency services for a seizure lasting five minutes or longer, repeated seizures without recovery, breathing difficulty, serious injury or a first seizure.`,
+    arInfo: `١. التعريف
+الصرع اضطراب عصبي يتميز بالاستعداد لحدوث نوبات متكررة غير مستثارة.
+
+٢. المظاهر المحتملة
+قد تسبب النوبات التحديق أو أحاسيس غير معتادة أو تيبسًا أو حركات تشنجية أو اضطراب الوعي. وتختلف الأعراض بحسب نوع النوبة.
+
+٣. التشخيص
+قد يشمل التقييم التاريخ المرضي والفحص العصبي وتخطيط كهربائية الدماغ وتصوير الدماغ عند الحاجة.
+
+٤. العلاج
+قد يشمل العلاج أدوية مضادة للنوبات يصفها الطبيب ومتابعة اختصاصية. لا توقف الأدوية فجأة دون استشارة طبية.
+
+٥. الرعاية التمريضية أثناء النوبة
+• ابقَ مع المريض وأبعد الأخطار المحيطة.
+• احمِ الرأس وأرخِ الملابس الضيقة حول الرقبة.
+• لا تقيّد الحركات.
+• لا تضع أي شيء في الفم.
+• احسب مدة النوبة.
+• بعد توقف الحركات، افحص التنفس وضع المريض على جانبه إذا كان ذلك مناسبًا.
+• اتبع خطة التعامل مع النوبات ووثّق الملاحظات.
+
+٦. علامات الخطر
+اتصل بالإسعاف إذا استمرت النوبة خمس دقائق أو أكثر، أو تكررت دون استعادة الوعي، أو حدثت صعوبة في التنفس أو إصابة خطيرة أو كانت النوبة الأولى.`
+  }
+];
   const search = document.getElementById("npDiseaseSearch");
   const results = document.getElementById("npDiseaseResults");
 
