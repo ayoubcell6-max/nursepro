@@ -1174,5 +1174,189 @@ renderFirstAid();
 renderCases();
 updateStats();
 </script>
+<!-- NursePro Premium Disease Library -->
+<section id="np-premium-library" style="
+  background:#f4f8f5;
+  padding:24px 16px;
+  margin:24px auto;
+  border-radius:20px;
+  max-width:900px;
+  font-family:Arial,sans-serif;
+  color:#163c2b;
+">
+  <div style="
+    background:#123f2c;
+    color:white;
+    padding:24px 18px;
+    border-radius:18px;
+    margin-bottom:20px;
+  ">
+    <div style="font-size:13px;letter-spacing:2px;color:#bce5ca;">
+      NURSEPRO PREMIUM
+    </div>
+
+    <h2 style="margin:12px 0;font-size:26px;">
+      🩺 Disease Library
+    </h2>
+
+    <p style="margin:0;line-height:1.7;">
+      Explore nursing topics and improve your knowledge.
+      <br>
+      اكتشف الأمراض وطوّر معلوماتك التمريضية.
+    </p>
+  </div>
+
+  <label for="npDiseaseSearch" style="font-weight:bold;">
+    🔎 Search for a disease | ابحث عن مرض
+  </label>
+
+  <input
+    id="npDiseaseSearch"
+    type="search"
+    placeholder="Diabetes, Asthma, السكري..."
+    style="
+      width:100%;
+      box-sizing:border-box;
+      padding:14px;
+      margin:12px 0 20px;
+      border:1px solid #cbdccf;
+      border-radius:12px;
+      font-size:16px;
+      background:white;
+    "
+  >
+
+  <div id="npDiseaseResults" style="
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+  "></div>
+
+  <p style="font-size:12px;line-height:1.7;color:#52685a;margin-top:20px;">
+    Educational content only. It does not replace professional medical advice.
+    <br>
+    محتوى تعليمي لا يغني عن استشارة المختصين.
+  </p>
+</section>
+
+<script>
+(function () {
+  const diseases = [
+    {
+      en: "Diabetes Mellitus",
+      ar: "داء السكري",
+      icon: "🩸",
+      info: "A condition involving high blood glucose. Nursing education includes glucose monitoring, medication safety and patient education.",
+      arInfo: "حالة يرتفع فيها سكر الدم. تشمل الرعاية التمريضية مراقبة السكر، وسلامة الأدوية، وتثقيف المريض."
+    },
+    {
+      en: "Hypertension",
+      ar: "ارتفاع ضغط الدم",
+      icon: "❤️",
+      info: "Persistently elevated blood pressure. Nursing care includes accurate measurement, monitoring and lifestyle education.",
+      arInfo: "ارتفاع مستمر في ضغط الدم. تشمل الرعاية قياس الضغط بدقة، والمتابعة، والتثقيف حول نمط الحياة."
+    },
+    {
+      en: "Asthma",
+      ar: "الربو",
+      icon: "🫁",
+      info: "A condition that causes airway inflammation and narrowing. Nursing education includes symptom monitoring and correct inhaler use.",
+      arInfo: "مرض يسبب التهاب الممرات الهوائية وتضيّقها. يشمل التثقيف مراقبة الأعراض وطريقة استخدام البخاخ."
+    },
+    {
+      en: "Pneumonia",
+      ar: "الالتهاب الرئوي",
+      icon: "🏥",
+      info: "An infection affecting the lungs. Nursing care includes respiratory assessment, monitoring oxygenation and following the treatment plan.",
+      arInfo: "عدوى تصيب الرئتين. تشمل الرعاية تقييم التنفس، ومراقبة الأكسجة، واتباع الخطة العلاجية."
+    },
+    {
+      en: "Meningitis",
+      ar: "التهاب السحايا",
+      icon: "🧠",
+      info: "Inflammation of the membranes surrounding the brain and spinal cord. Suspected meningitis requires urgent medical assessment.",
+      arInfo: "التهاب الأغشية المحيطة بالدماغ والحبل الشوكي. الاشتباه به يستدعي تقييمًا طبيًا عاجلًا."
+    },
+    {
+      en: "Heart Failure",
+      ar: "قصور القلب",
+      icon: "💓",
+      info: "A condition in which the heart cannot pump blood adequately for the body's needs. Monitoring symptoms and fluid status is important.",
+      arInfo: "حالة لا يستطيع فيها القلب ضخ الدم بما يكفي لحاجات الجسم. من المهم مراقبة الأعراض وتوازن السوائل."
+    }
+  ];
+
+  const search = document.getElementById("npDiseaseSearch");
+  const results = document.getElementById("npDiseaseResults");
+
+  function renderDiseases(query) {
+    const term = query.trim().toLowerCase();
+
+    const filtered = diseases.filter(function (d) {
+      return (d.en + " " + d.ar).toLowerCase().includes(term);
+    });
+
+    results.innerHTML = "";
+
+    if (filtered.length === 0) {
+      results.innerHTML =
+        '<p style="grid-column:1/-1;text-align:center;">' +
+        'No disease found | لم يتم العثور على المرض' +
+        '</p>';
+      return;
+    }
+
+    filtered.forEach(function (d) {
+      const card = document.createElement("article");
+
+      card.style.cssText =
+        "background:white;padding:18px;border-radius:15px;" +
+        "border:1px solid #dce9df;box-shadow:0 3px 10px #123f2c0d;";
+
+      const title = document.createElement("h3");
+      title.style.cssText = "margin:0 0 8px;font-size:18px;";
+      title.textContent = d.icon + " " + d.en;
+
+      const subtitle = document.createElement("p");
+      subtitle.style.cssText = "margin:0 0 12px;color:#43805a;";
+      subtitle.textContent = d.ar;
+
+      const description = document.createElement("p");
+      description.style.cssText =
+        "font-size:14px;line-height:1.7;margin:0 0 12px;";
+      description.textContent = d.info;
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = "العربية | Arabic";
+      button.style.cssText =
+        "padding:10px 14px;border:0;border-radius:9px;" +
+        "background:#e4f2e8;color:#16452e;font-weight:bold;";
+
+      button.addEventListener("click", function () {
+        description.textContent =
+          description.textContent === d.info ? d.arInfo : d.info;
+
+        button.textContent =
+          description.textContent === d.arInfo
+            ? "English | الإنجليزية"
+            : "العربية | Arabic";
+      });
+
+      card.appendChild(title);
+      card.appendChild(subtitle);
+      card.appendChild(description);
+      card.appendChild(button);
+      results.appendChild(card);
+    });
+  }
+
+  search.addEventListener("input", function () {
+    renderDiseases(search.value);
+  });
+
+  renderDiseases("");
+})();
+</script>
 </body>
 </html>
