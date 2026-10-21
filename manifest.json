@@ -1,0 +1,16 @@
+{
+  "name": "NursePro — Learn. Practice. Save Lives.",
+  "short_name": "NursePro",
+  "description": "Learn nursing, practice clinical skills, and improve patient care.",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#16452e",
+  "categories": [
+    "education",
+    "medical"
+  ]
+}
