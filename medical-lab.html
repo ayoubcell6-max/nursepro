@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071b18">
+<meta name="description" content="NursePro Medical Laboratory — Learn laboratory tests, understand results, and practice with clinical cases.">
+<title>NursePro | Medical Laboratory</title>
+
+<style>
+:root {
+  --bg: #071b18;
+  --panel: #102923;
+  --panel2: #16372e;
+  --green: #35d39a;
+  --text: #f1fff9;
+  --muted: #a5c5b9;
+  --border: #285044;
+  --red: #ff8585;
+  --yellow: #ffd477;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Arial, sans-serif;
+  line-height: 1.6;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button { cursor: pointer; }
+
+header {
+  padding: 25px 18px;
+  background: linear-gradient(140deg, #103c30, #071b18);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner, main, footer {
+  max-width: 1050px;
+  margin: auto;
+}
+
+.brand {
+  color: var(--green);
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+header h1 {
+  font-size: clamp(27px, 6vw, 43px);
+  line-height: 1.2;
+  margin: 12px 0;
+}
+
+header p, .muted {
+  color: var(--muted);
+}
+
+main { padding: 20px 15px 50px; }
+
+.hero {
+  padding: 23px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin-bottom: 22px;
+}
+
+.hero h2 { margin-top: 0; }
+
+.search {
+  width: 100%;
+  padding: 15px;
+  background: #061612;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: white;
+  margin-top: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 16px;
+}
+
+.category {
+  text-align: left;
+  color: var(--text);
+  transition: border-color .2s;
+}
+
+.category.active, .category:hover {
+  border-color: var(--green);
+  background: var(--panel2);
+}
+
+.icon { font-size: 27px; }
+
+.card h3 { margin: 8px 0; }
+
+.small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+section { margin: 30px 0; }
+
+.section-title {
+  font-size: 23px;
+  margin-bottom: 14px;
+}
+
+button.primary {
+  background: var(--green);
+  color: #06231a;
+  font-weight: 800;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+button.secondary {
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 13px;
+  border-radius: 10px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 14px 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 11px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+th { color: var(--green); }
+
+.badge {
+  display: inline-block;
+  border: 1px solid var(--border);
+  background: var(--panel2);
+  color: var(--green);
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.notice {
+  padding: 14px;
+  border-left: 3px solid var(--yellow);
+  background: #292719;
+  border-radius: 7px;
+  color: #ffebbb;
+  font-size: 13px;
+}
+
+#detail { margin-top: 20px; }
+
+.question {
+  border-bottom: 1px solid var(--border);
+  padding: 15px 0;
+}
+
+.option {
+  display: block;
+  padding: 11px;
+  margin: 8px 0;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #0a211b;
+}
+
+.option:has(input:checked) {
+  border-color: var(--green);
+}
+
+.option input { margin-right: 8px; }
+
+.feedback {
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 9px;
+  background: var(--panel2);
+}
+
+footer {
+  padding: 25px 16px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+[hidden] { display: none !important; }
+
+@media (min-width: 700px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main { padding-top: 30px; }
+}
+
+@media (max-width: 380px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 17px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">NURSEPRO PREMIUM</div>
+    <h1>🧪 Medical Laboratory</h1>
+    <p>Learn laboratory tests, understand results, and improve your clinical knowledge.</p>
+    <p dir="rtl">تعلّم التحاليل الطبية وافهم النتائج وتدرّب على الحالات السريرية.</p>
+    <div class="actions">
+      <a href="index.html" style="color:var(--green)">← Back to NursePro Home</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <span class="badge">EDUCATIONAL LAB</span>
+  <h2>Explore the Laboratory</h2>
+  <p class="muted">Search for a test or choose a laboratory department.</p>
+  <input
+    class="search"
+    id="search"
+    type="search"
+    placeholder="Search CBC, glucose, creatinine..."
+    aria-label="Search laboratory tests"
+    autocomplete="off"
+  >
+  <p dir="rtl" class="small">ابحث عن تحليل الدم أو السكر أو وظائف الكلى وغيرها.</p>
+</div>
+
+<section>
+  <h2 class="section-title">🔬 Laboratory Departments</h2>
+  <div class="grid" id="categories"></div>
+</section>
+
+<section>
+  <h2 class="section-title">📚 Laboratory Tests</h2>
+  <p class="muted" id="resultCount"></p>
+  <div class="grid" id="tests"></div>
+  <p id="noResults" hidden>No tests found. Try another search.</p>
+</section>
+
+<section id="detail" hidden>
+  <div class="card" id="detailContent"></div>
+</section>
+
+<section>
+  <h2 class="section-title">🩺 Virtual Clinical Cases</h2>
+  <p class="muted">Practice interpreting fictional laboratory results.</p>
+  <div class="grid" id="cases"></div>
+  <div id="caseDetail" hidden class="card" style="margin-top:15px"></div>
+</section>
+
+<section>
+  <h2 class="section-title">📝 Knowledge Quiz</h2>
+  <p class="muted">Choose the best answer. Your score appears when you submit.</p>
+  <div class="card">
+    <form id="quiz"></form>
+    <div class="actions">
+      <button class="primary" type="button" id="submitQuiz">Check Answers</button>
+      <button class="secondary" type="button" id="resetQuiz">Try Again</button>
+    </div>
+    <div id="quizResult" aria-live="polite"></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">📖 How to Read Results</h2>
+  <div class="card">
+    <p><strong>1. Identify the test.</strong> Understand what the test measures.</p>
+    <p><strong>2. Check the units.</strong> A number without its unit may be misleading.</p>
+    <p><strong>3. Review the laboratory reference interval.</strong> Use the range printed on the actual report.</p>
+    <p><strong>4. Consider the clinical context.</strong> Symptoms, medications, age, and other tests may affect interpretation.</p>
+    <p><strong>5. Escalate concerning findings.</strong> Follow local clinical protocols and inform the responsible clinician.</p>
+    <hr style="border-color:var(--border)">
+    <p dir="rtl">لا يُشخّص المرض اعتماداً على تحليل واحد فقط. يجب ربط النتائج بالأعراض والفحص السريري وبقية المعلومات الطبية.</p>
+  </div>
+</section>
+
+<div class="notice">
+  Educational use only. All patient cases are fictional. Reference intervals vary by laboratory, method, age, sex, pregnancy status, and other factors. This website does not diagnose disease or replace professional medical judgment. Do not use simulated results to make real patient-care decisions.
+</div>
+
+</main>
+
+<footer>
+  <div>© NursePro — Learn. Practice. Save Lives.</div>
+  <div>Medical Laboratory Education</div>
+</footer>
+
+<script>
+"use strict";
+
+/*
+ * Educational reference information only.
+ * Values shown below are illustrative, not universal clinical cutoffs.
+ */
+
+const departments = [
+  {id:"hematology", icon:"🩸", name:"Hematology", ar:"أمراض الدم"},
+  {id:"biochemistry", icon:"🧪", name:"Biochemistry", ar:"الكيمياء الحيوية"},
+  {id:"urinalysis", icon:"🚽", name:"Urinalysis", ar:"تحليل البول"},
+  {id:"microbiology", icon:"🦠", name:"Microbiology", ar:"الأحياء الدقيقة"},
+  {id:"cardiac", icon:"❤️", name:"Cardiac Markers", ar:"مؤشرات القلب"},
+  {id:"coagulation", icon:"🩸", name:"Coagulation", ar:"تخثّر الدم"},
+  {id:"hormones", icon:"🦋", name:"Hormones", ar:"الهرمونات"}
+];
+
+const labTests = [
+  {
+    id:"cbc", dept:"hematology", name:"Complete Blood Count (CBC)",
+    ar:"تعداد الدم الكامل",
+    purpose:"Measures several blood-cell components, including red cells, white cells, hemoglobin, and platelets.",
+    purposeAr:"يقيس مكونات الدم، ومنها الكريات الحمراء والبيضاء والهيموغلوبين والصفائح.",
+    high:"Interpret the specific component. For example, an elevated WBC may occur with infection, inflammation, stress, or other conditions.",
+    low:"A low hemoglobin may be associated with anemia. Low white cells or platelets require interpretation according to the component and clinical context.",
+    nursing:"Verify patient identification, follow specimen-collection procedures, check sample requirements, and report critical results according to local policy.",
+    example:"Hb 10 g/dL, WBC 7,000/µL, platelets 250,000/µL",
+    ref:"Reference intervals differ by age, sex, laboratory, and method. Use the ranges on the actual report."
+  },
+  {
+    id:"hb", dept:"hematology", name:"Hemoglobin (Hb)",
+    ar:"الهيموغلوبين",
+    purpose:"A protein in red blood cells that carries oxygen.",
+    purposeAr:"بروتين داخل كريات الدم الحمراء ينقل الأكسجين.",
+    high:"May be associated with dehydration or increased red-cell production, among other causes.",
+    low:"May indicate anemia or blood loss; additional assessment is needed.",
+    nursing:"Assess relevant symptoms and report concerning results to the responsible clinician.",
+    example:"Fictional result: 10 g/dL",
+    ref:"The expected range depends on age, sex, pregnancy status, and the laboratory."
+  },
+  {
+    id:"wbc", dept:"hematology", name:"White Blood Cell Count (WBC)",
+    ar:"كريات الدم البيضاء",
+    purpose:"Measures white blood cells, which help the body respond to infection and other challenges.",
+    purposeAr:"يقيس خلايا الدم البيضاء التي تشارك في الاستجابة المناعية.",
+    high:"May occur with infection, inflammation, medication effects, stress, or other conditions.",
+    low:"May occur with certain infections, medications, or bone-marrow and immune conditions.",
+    nursing:"Review symptoms, the differential count, medications, and other laboratory findings.",
+    example:"Fictional result: 7,000/µL",
+    ref:"The laboratory's own reference interval should be used."
+  },
+  {
+    id:"plt", dept:"hematology", name:"Platelet Count (PLT)",
+    ar:"عدد الصفائح الدموية",
+    purpose:"Measures platelets involved in blood clot formation.",
+    purposeAr:"يقيس الصفائح التي تساعد على تكوين الخثرة وإيقاف النزيف.",
+    high:"An increased count can have reactive or other causes and needs contextual interpretation.",
+    low:"A reduced count may increase bleeding risk depending on the level and clinical situation.",
+    nursing:"Observe for bleeding or bruising and promptly escalate significant or critical results.",
+    example:"Fictional result: 250,000/µL",
+    ref:"Reference intervals vary by laboratory and patient."
+  },
+  {
+    id:"glucose", dept:"biochemistry", name:"Blood Glucose",
+    ar:"سكر الدم",
+    purpose:"Measures glucose in the blood.",
+    purposeAr:"يقيس مستوى الغلوكوز في الدم.",
+    high:"May be associated with diabetes, stress, medications, or other conditions.",
+    low:"May be associated with glucose-lowering treatment, fasting, or other causes.",
+    nursing:"Check whether the test was fasting or random, assess symptoms, and follow the relevant clinical protocol.",
+    example:"Fictional fasting result: 130 mg/dL",
+    ref:"Interpretation depends on fasting status, clinical context, repeat testing, and applicable diagnostic criteria."
+  },
+  {
+    id:"creatinine", dept:"biochemistry", name:"Creatinine",
+    ar:"الكرياتينين",
+    purpose:"A blood marker used with other information to assess kidney function.",
+    purposeAr:"مؤشر يُستخدم مع معلومات أخرى لتقييم وظائف الكلى.",
+    high:"May be associated with reduced kidney filtration, dehydration, medicines, or other causes.",
+    low:"Can be associated with low muscle mass or other factors.",
+    nursing:"Review previous results, fluid status, medicines, urine output, and estimated filtration rate where available.",
+    example:"Fictional result: 1.5 mg/dL",
+    ref:"Interpret alongside eGFR, trends, muscle mass, and the laboratory's reference interval."
+  },
+  {
+    id:"urea", dept:"biochemistry", name:"Urea / BUN",
+    ar:"اليوريا",
+    purpose:"Measures a nitrogen-containing waste product related to protein metabolism.",
+    purposeAr:"يقيس مادة ناتجة عن استقلاب البروتين وتطرحها الكلى.",
+    high:"May occur with dehydration, reduced kidney function, increased protein breakdown, or other causes.",
+    low:"May occur with low protein intake, some liver conditions, or other factors.",
+    nursing:"Assess hydration, clinical status, kidney markers, and the reported units.",
+    example:"Fictional result: 35 mg/dL BUN",
+    ref:"BUN and urea are not numerically interchangeable. Confirm which test and units are reported."
+  },
+  {
+    id:"alt", dept:"biochemistry", name:"ALT",
+    ar:"إنزيم الكبد ALT",
+    purpose:"An enzyme often measured when assessing liver-cell injury.",
+    purposeAr:"إنزيم يُقاس ضمن تقييم أذية خلايا الكبد.",
+    high:"May occur with liver inflammation, medicines, fatty liver disease, or other causes.",
+    low:"A low value is usually less informative; interpret the complete clinical picture.",
+    nursing:"Review other liver tests, medicines, symptoms, and trends; do not diagnose from ALT alone.",
+    example:"Fictional result: 85 U/L",
+    ref:"Use the method-specific laboratory interval."
+  },
+  {
+    id:"ast", dept:"biochemistry", name:"AST",
+    ar:"إنزيم AST",
+    purpose:"An enzyme present in the liver and other tissues, including muscle.",
+    purposeAr:"إنزيم موجود في الكبد وأنسجة أخرى مثل العضلات.",
+    high:"May reflect liver or muscle injury and several other conditions.",
+    low:"A low result is generally interpreted with the rest of the report.",
+    nursing:"Compare with ALT, other laboratory tests, symptoms, and recent clinical events.",
+    example:"Fictional result: 65 U/L",
+    ref:"A result alone cannot identify the source of an elevation."
+  },
+  {
+    id:"sodium", dept:"biochemistry", name:"Sodium (Na⁺)",
+    ar:"الصوديوم",
+    purpose:"An electrolyte important for fluid balance and nerve and muscle function.",
+    purposeAr:"شاردة مهمة لتوازن السوائل وعمل الأعصاب والعضلات.",
+    high:"May be associated with water imbalance or other medical conditions.",
+    low:"May occur with excess water relative to sodium, medications, or other causes.",
+    nursing:"Assess neurological symptoms, fluid balance, medications, and urgency according to protocol.",
+    example:"Fictional result: 130 mmol/L",
+    ref:"Interpret the value and rate of change using the laboratory range and clinical context."
+  },
+  {
+    id:"potassium", dept:"biochemistry", name:"Potassium (K⁺)",
+    ar:"البوتاسيوم",
+    purpose:"An electrolyte essential for muscle and cardiac electrical activity.",
+    purposeAr:"شاردة أساسية لعمل العضلات والنشاط الكهربائي للقلب.",
+    high:"Can be associated with kidney dysfunction, medicines, or sample hemolysis.",
+    low:"Can be associated with gastrointestinal losses, medications, or other causes.",
+    nursing:"Promptly escalate potentially critical values; check sample quality and follow local protocols.",
+    example:"Fictional result: 3.0 mmol/L",
+    ref:"Abnormal potassium can be dangerous. The appropriate response depends on the value and patient."
+  },
+  {
+    id:"urine", dept:"urinalysis", name:"Urinalysis",
+    ar:"تحليل البول الكامل",
+    purpose:"Examines urine appearance and selected chemical and microscopic findings.",
+    purposeAr:"يفحص مظهر البول ومكوناته الكيميائية والمجهرية.",
+    high:"Findings such as increased protein, glucose, or white cells need interpretation based on the specific test.",
+    low:"A negative finding does not exclude every urinary or kidney condition.",
+    nursing:"Use the correct collection method and specimen container; prevent contamination and follow transport requirements.",
+    example:"Fictional findings: leukocyte esterase positive; nitrite negative",
+    ref:"A urinalysis alone does not confirm or exclude a urinary tract infection."
+  },
+  {
+    id:"culture", dept:"microbiology", name:"Urine Culture",
+    ar:"زراعة البول",
+    purpose:"Attempts to identify microorganisms growing in a urine specimen and may include susceptibility testing.",
+    purposeAr:"تهدف إلى تحديد الجراثيم في عينة البول وقد تتضمن اختبار الحساسية للمضادات.",
+    high:"Growth must be interpreted alongside symptoms, collection quality, organism, and colony count.",
+    low:"No growth may occur for several reasons and does not rule out every infection.",
+    nursing:"Collect the sample correctly, label it accurately, and follow specimen transport instructions.",
+    example:"Fictional result: bacterial growth reported; interpretation requires full report and symptoms",
+    ref:"Culture results and susceptibility testing must be interpreted by qualified clinicians."
+  },
+  {
+    id:"troponin", dept:"cardiac", name:"Troponin",
+    ar:"التروبونين",
+    purpose:"A cardiac biomarker used in evaluating possible heart-muscle injury.",
+    purposeAr:"مؤشر يُستخدم عند تقييم احتمال أذية عضلة القلب.",
+    high:"An elevated value may indicate myocardial injury, but it does not by itself establish the cause.",
+    low:"A single early result may not exclude acute injury; timing and serial measurements matter.",
+    nursing:"Chest pain, breathlessness, collapse, or other possible cardiac emergency symptoms require urgent assessment and local emergency protocols.",
+    example:"Fictional result: above the assay's reported 99th-percentile limit",
+    ref:"Use the assay-specific cutoff, timing, serial changes, ECG, and clinical assessment."
+  },
+  {
+    id:"ptinr", dept:"coagulation", name:"PT / INR",
+    ar:"زمن البروثرومبين وINR",
+    purpose:"Assesses selected aspects of blood clotting; INR is commonly used to monitor warfarin therapy.",
+    purposeAr:"يقيم جانباً من تخثر الدم، ويستخدم INR لمتابعة الوارفارين في حالات محددة.",
+    high:"A prolonged PT/INR may be associated with anticoagulants, vitamin K deficiency, liver disease, or other factors.",
+    low:"Meaning depends on why the test was ordered and the treatment target.",
+    nursing:"Check anticoagulant history, bleeding symptoms, the prescribed target, and local escalation protocols.",
+    example:"Fictional INR: 3.5",
+    ref:"The desired INR range depends on the indication and individual prescription."
+  },
+  {
+    id:"tsh", dept:"hormones", name:"TSH",
+    ar:"الهرمون المحفز للغدة الدرقية",
+    purpose:"A hormone test used to evaluate thyroid function, usually alongside other clinical information and sometimes free T4.",
+    purposeAr:"فحص يساعد في تقييم وظيفة الغدة الدرقية وقد يُطلب مع Free T4.",
+    high:"Can be associated with an underactive thyroid, though interpretation depends on context.",
+    low:"Can be associated with an overactive thyroid or other causes.",
+    nursing:"Review symptoms, medicines, pregnancy status where relevant, and accompanying thyroid tests.",
+    example:"Fictional result: 7 mIU/L",
+    ref:"Interpret using the local reference interval and the patient's clinical circumstances."
+  }
+];
+
+const clinicalCases = [
+  {
+    title:"Case 1 — CBC",
+    ar:"حالة تعداد الدم",
+    scenario:"A fictional adult patient has Hb 10 g/dL. The report flags hemoglobin as low. Other findings and symptoms are not yet available.",
+    question:"What is the most appropriate interpretation?",
+    choices:[
+      "The result alone confirms iron-deficiency anemia.",
+      "Low hemoglobin may indicate anemia; assess the full CBC and clinical context.",
+      "The patient definitely has a bacterial infection."
+    ],
+    answer:1,
+    explanation:"Low hemoglobin may indicate anemia, but the cause requires additional history, examination, and appropriate investigations."
+  },
+  {
+    title:"Case 2 — Potassium",
+    ar:"حالة البوتاسيوم",
+    scenario:"A fictional laboratory report flags a potassium result as critically high.",
+    question:"What is the best next step?",
+    choices:[
+      "Ignore it if the patient feels well.",
+      "Wait until the next routine appointment.",
+      "Promptly follow the critical-result protocol and notify the responsible clinician."
+    ],
+    answer:2,
+    explanation:"Potentially critical potassium abnormalities can affect cardiac electrical activity and require prompt assessment under local protocols."
+  },
+  {
+    title:"Case 3 — Troponin",
+    ar:"حالة التروبونين",
+    scenario:"A fictional patient presents with chest discomfort. An initial troponin result is below the assay cutoff.",
+    question:"Does one result always exclude acute myocardial injury?",
+    choices:[
+      "Yes, in every situation.",
+      "No. Timing, serial testing, ECG, and clinical assessment matter.",
+      "Yes, provided the patient is young."
+    ],
+    answer:1,
+    explanation:"An early result may be negative. Evaluation depends on symptom timing, assay-specific protocols, ECG, and repeat testing when indicated."
+  },
+  {
+    title:"Case 4 — Urine Culture",
+    ar:"حالة زراعة البول",
+    scenario:"A fictional urine culture reports bacterial growth.",
+    question:"What should be considered before interpreting the result?",
+    choices:[
+      "Symptoms, collection quality, organism, and full laboratory report.",
+      "Only the colour of the urine.",
+      "The result always proves a symptomatic infection."
+    ],
+    answer:0,
+    explanation:"Bacterial growth can reflect infection or contamination, among other possibilities. Clinical findings and specimen quality matter."
+  }
+];
+
+const quizQuestions = [
+  {
+    q:"Which test measures several blood-cell components?",
+    ar:"أي فحص يقيس عدة مكونات من خلايا الدم؟",
+    options:["CBC","TSH","Troponin"],
+    answer:0,
+    explanation:"CBC measures red cells, white cells, hemoglobin, platelets, and related indices."
+  },
+  {
+    q:"Which marker is commonly used when evaluating possible heart-muscle injury?",
+    ar:"أي مؤشر يُستخدم عند تقييم أذية عضلة القلب؟",
+    options:["ALT","Troponin","Urine glucose"],
+    answer:1,
+    explanation:"Troponin is used in evaluating myocardial injury alongside clinical assessment and other investigations."
+  },
+  {
+    q:"What is important when interpreting a laboratory result?",
+    ar:"ما المهم عند تفسير نتيجة مخبرية؟",
+    options:[
+      "The number alone",
+      "Only the patient's age",
+      "Units, reference interval, clinical context, and trends"
+    ],
+    answer:2,
+    explanation:"Interpretation requires the reported units, laboratory reference interval, patient context, and often trends or other tests."
+  },
+  {
+    q:"Which test is commonly used to monitor warfarin therapy?",
+    ar:"أي فحص يُستخدم عادة لمتابعة الوارفارين؟",
+    options:["INR","TSH","WBC"],
+    answer:0,
+    explanation:"INR is used to monitor warfarin in appropriate indications, with an individualized target."
+  },
+  {
+    q:"Can one laboratory result always confirm a disease?",
+    ar:"هل تؤكد نتيجة واحدة المرض دائماً؟",
+    options:[
+      "Yes, always",
+      "No, results must be interpreted in context",
+      "Only if the result is high"
+    ],
+    answer:1,
+    explanation:"Laboratory tests support clinical assessment but do not automatically establish a diagnosis."
+  }
+];
+
+const categoriesEl = document.getElementById("categories");
+const testsEl = document.getElementById("tests");
+const searchEl = document.getElementById("search");
+let selectedDepartment = "all";
+
+function safeText(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
+}
+
+function renderCategories() {
+  const allButton = `
+    <button class="card category ${selectedDepartment === "all" ? "active" : ""}"
+      data-dept="all">
+      <div class="icon">🔬</div>
+      <h3>All Tests</h3>
+      <div class="small">جميع التحاليل</div>
+    </button>`;
+
+  categoriesEl.innerHTML = allButton + departments.map(d => `
+    <button class="card category ${selectedDepartment === d.id ? "active" : ""}"
+      data-dept="${safeText(d.id)}">
+      <div class="icon">${d.icon}</div>
+      <h3>${safeText(d.name)}</h3>
+      <div class="small">${safeText(d.ar)}</div>
+    </button>
+  `).join("");
+
+  categoriesEl.querySelectorAll("[data-dept]").forEach(button => {
+    button.addEventListener("click", () => {
+      selectedDepartment = button.dataset.dept;
+      renderCategories();
+      renderTests();
+      document.getElementById("detail").hidden = true;
+    });
+  });
+}
+
+function renderTests() {
+  const query = searchEl.value.trim().toLowerCase();
+
+  const filtered = labTests.filter(test => {
+    const matchesDepartment =
+      selectedDepartment === "all" || test.dept === selectedDepartment;
+
+    const searchable = [
+      test.name, test.ar, test.purpose, test.purposeAr,
+      test.id, test.dept
+    ].join(" ").toLowerCase();
+
+    return matchesDepartment && searchable.includes(query);
+  });
+
+  document.getElementById("resultCount").textContent =
+    `${filtered.length} educational tests`;
+
+  document.getElementById("noResults").hidden = filtered.length > 0;
+
+  testsEl.innerHTML = filtered.map(test => {
+    const department = departments.find(d => d.id === test.dept);
+    return `
+      <article class="card">
+        <span class="badge">${safeText(department.name)}</span>
+        <h3>${safeText(test.name)}</h3>
+        <div dir="rtl">${safeText(test.ar)}</div>
+        <p class="small">${safeText(test.purpose)}</p>
+        <button class="primary" data-test="${safeText(test.id)}">
+          Learn More
+        </button>
+      </article>`;
+  }).join("");
+
+  testsEl.querySelectorAll("[data-test]").forEach(button => {
+    button.addEventListener("click", () => showTest(button.dataset.test));
+  });
+}
+
+function showTest(id) {
+  const test = labTests.find(item => item.id === id);
+  if (!test) return;
+
+  const detail = document.getElementById("detail");
+  const content = document.getElementById("detailContent");
+
+  content.innerHTML = `
+    <span class="badge">LAB TEST</span>
+    <h2>${safeText(test.name)}</h2>
+    <h3 dir="rtl">${safeText(test.ar)}</h3>
+
+    <h3>Purpose</h3>
+    <p>${safeText(test.purpose)}</p>
+    <p dir="rtl">${safeText(test.purposeAr)}</p>
+
+    <h3>Possible High Results</h3>
+    <p>${safeText(test.high)}</p>
+
+    <h3>Possible Low Results</h3>
+    <p>${safeText(test.low)}</p>
+
+    <h3>Nursing Considerations</h3>
+    <p>${safeText(test.nursing)}</p>
+
+    <h3>Fictional Example</h3>
+    <p>${safeText(test.example)}</p>
+
+    <h3>Reference Information</h3>
+    <p>${safeText(test.ref)}</p>
+
+    <div class="notice">
+      This is educational information, not a diagnosis or a treatment recommendation.
+    </div>
+    <div class="actions">
+      <button class="secondary" id="closeDetail">Close</button>
+    </div>`;
+
+  detail.hidden = false;
+  document.getElementById("closeDetail").addEventListener("click", () => {
+    detail.hidden = true;
+  });
+  detail.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+searchEl.addEventListener("input", () => {
+  selectedDepartment = "all";
+  renderCategories();
+  renderTests();
+});
+
+function renderCases() {
+  const casesEl = document.getElementById("cases");
+
+  casesEl.innerHTML = clinicalCases.map((item, index) => `
+    <article class="card">
+      <div class="icon">🩺</div>
+      <h3>${safeText(item.title)}</h3>
+      <div dir="rtl" class="small">${safeText(item.ar)}</div>
+      <p class="small">${safeText(item.scenario)}</p>
+      <button class="primary" data-case="${index}">Open Case</button>
+    </article>
+  `).join("");
+
+  casesEl.querySelectorAll("[data-case]").forEach(button => {
+    button.addEventListener("click", () => showCase(Number(button.dataset.case)));
+  });
+}
+
+function showCase(index) {
+  const item = clinicalCases[index];
+  if (!item) return;
+
+  const box = document.getElementById("caseDetail");
+  box.innerHTML = `
+    <h3>${safeText(item.title)}</h3>
+    <p>${safeText(item.scenario)}</p>
+    <h4>${safeText(item.question)}</h4>
+    <div>
+      ${item.choices.map((choice, i) => `
+        <label class="option">
+          <input type="radio" name="caseAnswer" value="${i}">
+          ${safeText(choice)}
+        </label>
+      `).join("")}
+    </div>
+    <div class="actions">
+      <button class="primary" id="checkCase">Check Answer</button>
+    </div>
+    <div id="caseFeedback" aria-live="polite"></div>`;
+
+  box.hidden = false;
+
+  document.getElementById("checkCase").addEventListener("click", () => {
+    const selected = box.querySelector('input[name="caseAnswer"]:checked');
+    const feedback = document.getElementById("caseFeedback");
+
+    if (!selected) {
+      feedback.innerHTML = `<p class="feedback">Choose an answer first.</p>`;
+      return;
+    }
+
+    const correct = Number(selected.value) === item.answer;
+
+    feedback.innerHTML = `
+      <div class="feedback">
+        <strong>${correct ? "Correct!" : "Not quite."}</strong>
+        <p>${safeText(item.explanation)}</p>
+      </div>`;
+  });
+
+  box.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function renderQuiz() {
+  const quiz = document.getElementById("quiz");
+
+  quiz.innerHTML = quizQuestions.map((item, index) => `
+    <div class="question">
+      <strong>${index + 1}. ${safeText(item.q)}</strong>
+      <p class="small" dir="rtl">${safeText(item.ar)}</p>
+      ${item.options.map((option, i) => `
+        <label class="option">
+          <input type="radio" name="q${index}" value="${i}">
+          ${safeText(option)}
+        </label>
+      `).join("")}
+      <div class="small" id="feedback${index}" aria-live="polite"></div>
+    </div>
+  `).join("");
+}
+
+document.getElementById("submitQuiz").addEventListener("click", () => {
+  let score = 0;
+  let answered = 0;
+
+  quizQuestions.forEach((item, index) => {
+    const selected = document.querySelector(`input[name="q${index}"]:checked`);
+    const feedback = document.getElementById(`feedback${index}`);
+
+    if (selected) {
+      answered++;
+      if (Number(selected.value) === item.answer) score++;
+    }
+
+    feedback.textContent = selected
+      ? (Number(selected.value) === item.answer
+          ? "Correct. " : "Incorrect. ") + item.explanation
+      : "Not answered. " + item.explanation;
+  });
+
+  document.getElementById("quizResult").innerHTML = `
+    <div class="feedback">
+      <h3>Your Score: ${score} / ${quizQuestions.length}</h3>
+      <p>Answered: ${answered} / ${quizQuestions.length}</p>
+      <p>${score === quizQuestions.length
+        ? "Excellent work!"
+        : "Review the explanations and try again."}</p>
+    </div>`;
+});
+
+document.getElementById("resetQuiz").addEventListener("click", () => {
+  renderQuiz();
+  document.getElementById("quizResult").innerHTML = "";
+});
+
+renderCategories();
+renderTests();
+renderCases();
+renderQuiz();
+</script>
+
+</body>
+</html>
